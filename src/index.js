@@ -16,6 +16,7 @@ ReactDOM.render(
           <Switch>
           <Route exact={true} path="/" component={IndexPageComponent}/>
           <Route exact={true} path="/UnitCategory/:CategoryName" component={UnitCategoryWorksComponent}/>
+          <Route exact={true} path="/listWork/:CategoryName" component={listWorksComponent}/>
           </Switch>
         </Router>
     </ApolloProvider>,
