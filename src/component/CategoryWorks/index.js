@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
+
+import NavbarComponent from '../Navbar/index';
 import {Grid,Row,Col,Thumbnail} from 'react-bootstrap';
 
 const CategoryWorksQuery = gql`
@@ -23,6 +25,8 @@ class CategoryWorksComponent extends Component{
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
         return(
+            <div>
+            <NavbarComponent/>
             <Grid>
              <Row>
                {this.props.data.listCategory.map((data,key) =>{
@@ -38,6 +42,7 @@ class CategoryWorksComponent extends Component{
                })}
             </Row>
            </Grid>
+           </div>
         )
     }
 }
