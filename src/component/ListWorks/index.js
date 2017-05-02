@@ -40,7 +40,9 @@ class listWorksComponent extends Component{
                        <Col xs={4} md={2}>
                         <Thumbnail alt="171x180" src={data.CoverImage} >
                         <h3>{data.WorkName}</h3>
-                        <i class="fa fa-shopping-cart" aria-hidden="true">{data.Queue}</i>
+                        <p className="text-right">
+                          <i className="fa fa-shopping-cart" aria-hidden="true"> {"  "+data.Queue}</i>
+                        </p>
                         </Thumbnail>
                        </Col>
                       </Link>
