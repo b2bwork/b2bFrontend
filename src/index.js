@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import IndexPageComponent from './component/IndexPage/index';
-import listWorksComponent from './component/Works/index';
+import listWorksComponent from './component/ListWorks/index';
 import UnitCategoryWorksComponent from './component/CategoryWorks/unitCategory';
 import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
