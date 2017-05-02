@@ -22,6 +22,15 @@ const DetailWorkQuery = gql`
               Image
               TagWork
           }
+        listReview(WorkId: $WorkId){
+            WorkName
+            WorkId
+            ReviewerName
+            ReviewerImage
+            Reviewdata
+            Star
+
+        }
       }
 `;
 class DetailWorkComponent extends Component {
@@ -79,7 +88,27 @@ class DetailWorkComponent extends Component {
                </Col>
                <Col xs={12} md={6} bsClass="btn-detail">
                 <div className="col-md-6 col-xs-12">
+                    <div className="col-md-4 text-right">
+                        <i className="fa fa-shopping-cart" aria-hidden="true">
+                             {"  "+this.props.data.DetailWork.Queue}
+                        </i>
+                        </div><br/>
                     <Button bsStyle="primary">คุยกับ freelance</Button>
+                    <div className="col-md-6">
+                        <h3>รีวิว</h3>
+                        <div className="col-md-12" >
+                        {this.props.data.listReview.map((data,key) => {
+                           return(
+                                   <p key={key}>
+                                    <img width={50} height={50} src={data.ReviewerImage}/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{data.ReviewerName}<br/>
+                                    &nbsp;&nbsp;{data.Reviewdata}
+                                   </p>
+                               
+                           )
+                        })}
+                        </div>
+                    </div>
                 </div>
                </Col>
              </Row>
