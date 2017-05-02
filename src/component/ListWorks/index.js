@@ -10,6 +10,7 @@ const listWorksQuery = gql`
                   _id
                   WorkName
                   CoverImage
+                  Queue
             }
       }
      `;
@@ -35,10 +36,11 @@ class listWorksComponent extends Component{
                {this.props.data.listWorks.map((data,key) =>{
                   return( 
                     <div key={key}>
-                      <Link to={{ pathname: '/Works/'+ data.WorkName }}>
+                      <Link to={{ pathname: '/DetailWork/'+ data._id }}>
                        <Col xs={4} md={2}>
                         <Thumbnail alt="171x180" src={data.CoverImage} >
                         <h3>{data.WorkName}</h3>
+                        <i class="fa fa-shopping-cart" aria-hidden="true">{data.Queue}</i>
                         </Thumbnail>
                        </Col>
                       </Link>
