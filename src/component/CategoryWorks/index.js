@@ -26,7 +26,6 @@ class CategoryWorksComponent extends Component{
          }
         return(
             <div>
-            <NavbarComponent/>
             <Grid>
              <Row>
                {this.props.data.listCategory.map((data,key) =>{
