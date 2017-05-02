@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
-import {Grid,Row,Col,Carousel,Table} from 'react-bootstrap';
+import {Grid,Row,Col,Carousel,Table,Button} from 'react-bootstrap';
 import './index.css';
 
 const DetailWorkQuery = gql`
@@ -21,7 +21,6 @@ const DetailWorkQuery = gql`
               Queue 
               Image
               TagWork
-              
           }
       }
 `;
@@ -38,7 +37,7 @@ class DetailWorkComponent extends Component {
         if (this.props.data.error) {
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
-         
+         console.log(this.props.data.DetailWork);
         return(
            <div className="DetailWork">
             <Grid>
@@ -46,14 +45,18 @@ class DetailWorkComponent extends Component {
                <Col xs={12} md={6} bsClass="btn-detail">
                <div className="detail col-md-6 col-xs-12">
                 <Carousel>
-                 <Carousel.Item>
-                  <img width={300} height={300} alt="900x500" src="http://i.imgur.com/mbatYYB.jpg"/>
+                    {this.props.data.DetailWork.Image.map((image,key) =>{
+                        return(
+                 <Carousel.Item key={key}>
+                  <img className="text-center"width={300} height={300} alt="900x500" src={image}/>
                  </Carousel.Item>
+                        )
+                    })}
                 </Carousel>
                <h2 className="text-center">{this.props.data.DetailWork.WorkName}หหห</h2>
                <div>
                 <h3>ข้อมูลเกี่ยวกับราคา</h3>
-                <Table responsive hover border>
+                <Table responsive hover>
                  <thead>
                   <tr>
                     <th>ราคา</th>
@@ -73,6 +76,11 @@ class DetailWorkComponent extends Component {
                 <p>{this.props.data.DetailWork.ExperienceWorker}</p>
                </div>
                </div>
+               </Col>
+               <Col xs={12} md={6} bsClass="btn-detail">
+                <div className="col-md-6 col-xs-12">
+                    <Button bsStyle="primary">คุยกับ freelance</Button>
+                </div>
                </Col>
              </Row>
             </Grid>
