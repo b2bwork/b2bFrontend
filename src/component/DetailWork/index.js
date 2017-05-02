@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
-import {Grid,Row,Col,Carousel} from 'react-bootstrap';
+import {Grid,Row,Col,Carousel,Table} from 'react-bootstrap';
 import './index.css';
 
 const DetailWorkQuery = gql`
@@ -47,10 +47,31 @@ class DetailWorkComponent extends Component {
                <div className="detail col-md-6 col-xs-12">
                 <Carousel>
                  <Carousel.Item>
-                  <img width={900} height={300}src="/assets/carousel.png" className="carouselImage"/>
+                  <img width={300} height={300} alt="900x500" src="http://i.imgur.com/mbatYYB.jpg"/>
                  </Carousel.Item>
                 </Carousel>
-               <h3 className="text-center">{this.props.data.DetailWork.WorkName}หหห</h3>
+               <h2 className="text-center">{this.props.data.DetailWork.WorkName}หหห</h2>
+               <div>
+                <h3>ข้อมูลเกี่ยวกับราคา</h3>
+                <Table responsive hover border>
+                 <thead>
+                  <tr>
+                    <th>ราคา</th>
+                    <th>ระยะเวลา</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                  <tr>
+                   <td>{this.props.data.DetailWork.Price} บาท</td>
+                   <td>{this.props.data.DetailWork.Workdays} วัน</td>
+                  </tr>
+                 </tbody>
+                </Table>
+                <h3>ขอบเขตของงาน</h3>
+                <p>{this.props.data.DetailWork.ScopeWork}</p>
+                <h3>ประสบการณ์การทำงาน</h3>
+                <p>{this.props.data.DetailWork.ExperienceWorker}</p>
+               </div>
                </div>
                </Col>
              </Row>
