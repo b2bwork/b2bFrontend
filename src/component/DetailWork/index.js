@@ -104,7 +104,6 @@ class DetailWorkComponent extends Component {
                                     &nbsp;&nbsp;&nbsp;&nbsp;{data.ReviewerName}<br/>
                                     &nbsp;&nbsp;{data.Reviewdata}
                                    </p>
-                               
                            )
                         })}
                         </div>
