@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import ReactStars from 'react-stars';
-import {Button,Modal} from 'react-bootstrap';
+import {Button,Modal,FormGroup,ControlLabel,FormControl,Form} from 'react-bootstrap';
 
 class AddReviewComponent extends Component{
     constructor(props){
@@ -48,7 +48,13 @@ class AddReviewComponent extends Component{
             <Modal.Title>เขียนรีวิว</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            
+              <ReactStars count={5} size={24}  color2={'#ffd700'} />
+           <Form inline>
+            <FormGroup controlId="formControlsTextarea">
+             <ControlLabel>รายละเอียด</ControlLabel>
+             <FormControl componentClass="textarea" placeholder="textarea" />
+             </FormGroup>
+           </Form>
           </Modal.Body>
         </Modal>
         </div>
