@@ -10,8 +10,12 @@
     "react-apollo": "^1.1.2",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
+    "react-dropzone": "^3.13.1",
+    "react-quill": "^1.0.0-rc.2",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-stars": "^2.1.0",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
