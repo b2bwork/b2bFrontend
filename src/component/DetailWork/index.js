@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import {Grid,Row,Col,Carousel,Table,Button} from 'react-bootstrap';
 import './index.css';
+import AddReviewComponent from '../AddReview/index';
 
 const DetailWorkQuery = gql`
       query GetDetailWork($WorkId: String){
@@ -46,7 +47,6 @@ class DetailWorkComponent extends Component {
         if (this.props.data.error) {
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
-         console.log(this.props.data.DetailWork);
         return(
            <div className="DetailWork">
             <Grid>
@@ -95,6 +95,7 @@ class DetailWorkComponent extends Component {
                         </div><br/>
                     <Button bsStyle="primary">คุยกับ freelance</Button>
                     <div className="col-md-6">
+                        <AddReviewComponent/>
                         <h3>รีวิว</h3>
                         <div className="col-md-12" >
                         {this.props.data.listReview.map((data,key) => {
