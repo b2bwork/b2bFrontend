@@ -3,6 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import ReactStars from 'react-stars';
+import Dropzone from 'react-dropzone';
 import {Button,Modal,FormGroup,ControlLabel,FormControl,Form} from 'react-bootstrap';
 
 class AddReviewComponent extends Component{
@@ -14,7 +15,7 @@ class AddReviewComponent extends Component{
              ReviewerName: localStorage.getItem('UserName'),
              Reviewdata: "",
              Star: "",
-             Image: ""
+             Images: []
     };
     }
     
@@ -33,6 +34,11 @@ class AddReviewComponent extends Component{
     addReview(){
 
     }
+    onDrop(Images) {
+    this.setState({
+      Images
+    });
+  }
     render(){
       return(
           <div>
@@ -53,6 +59,12 @@ class AddReviewComponent extends Component{
             <FormGroup controlId="formControlsTextarea">
              <ControlLabel>รายละเอียด</ControlLabel>
              <FormControl componentClass="textarea" placeholder="textarea" />
+             </FormGroup>
+             <FormGroup controlId="formControlsTextarea">
+             <ControlLabel>รูปภาพ</ControlLabel>
+             <Dropzone onDrop={this.onDrop.bind(this)}>
+              <p>อัพโหลดรูปภาพงาน</p>
+             </Dropzone>
              </FormGroup>
            </Form>
           </Modal.Body>
