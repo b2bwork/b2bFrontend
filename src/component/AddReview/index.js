@@ -10,6 +10,14 @@ import '../../../node_modules/react-dropzone-component/styles/filepicker.css'
 import '../../../node_modules/dropzone/dist/min/dropzone.min.css'
 import {Button,Modal,FormGroup,ControlLabel,FormControl,Form} from 'react-bootstrap';
 
+
+const AddReviewQuery = gql`
+          mutation addreview($WorkId: String , $ReviewerName: String , $Reviewdata: String ,$Star: Int, $Image: [String]){
+                   InsertReview(WorkId: $WorkId , ReviewerName: $ReviewerName , Reviewdata: $Reviewdata , Star: $Star , Image: $Image ){
+                     WorkId
+                   }
+                 }
+`;
 class AddReviewComponent extends Component{
     constructor(props){
         super(props)
@@ -77,4 +85,6 @@ let eventHandlers = { addedfile: (file) => console.log(file) }
 
     }
 }
-export default AddReviewComponent
+
+const Addreview = graphql(AddReviewQuery)(AddReviewComponent)
+export default Addreview
