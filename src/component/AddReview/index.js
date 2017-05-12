@@ -53,8 +53,7 @@ class AddReviewComponent extends Component{
   }
     render(){
       let componentConfig = { postUrl: 'no-url' };
-let djsConfig = { autoProcessQueue: false }
-let eventHandlers = { addedfile: (file) => console.log(file) }
+      let djsConfig = { autoProcessQueue: false }
       return(
           <div>
           <Button
@@ -77,7 +76,7 @@ let eventHandlers = { addedfile: (file) => console.log(file) }
            </div>
            </div>
            <label class="col-sm-2 control-label">รูปภาพงาน</label>
-              <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers} djsConfig={djsConfig} />
+              <DropzoneComponent config={componentConfig} djsConfig={djsConfig} />
           </Modal.Body>
         </Modal>
         </div>

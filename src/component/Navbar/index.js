@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import {Navbar,Nav,NavItem,NavDropdown,MenuItem} from 'react-bootstrap';
+import './index.css';
 
 export default class NavbarComponent extends Component{
     render(){
         return (
-            <Navbar collapseOnSelect>
+            <Navbar collapseOnSelect className="btn-navbar">
     <Navbar.Header>
       <Navbar.Brand>
         <a href="#">b2b-logo</a>
