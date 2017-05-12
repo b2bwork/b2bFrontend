@@ -1,0 +1,37 @@
+[1mdiff --git a/src/component/CategoryWorks/index.js b/src/component/CategoryWorks/index.js[m
+[1mindex 00bf49f..dc94c2b 100644[m
+[1m--- a/src/component/CategoryWorks/index.js[m
+[1m+++ b/src/component/CategoryWorks/index.js[m
+[36m@@ -26,7 +26,6 @@[m [mclass CategoryWorksComponent extends Component{[m
+          }[m
+         return([m
+             <div>[m
+[31m-            <NavbarComponent/>[m
+             <Grid>[m
+              <Row>[m
+                {this.props.data.listCategory.map((data,key) =>{[m
+[1mdiff --git a/src/component/Works/index.js b/src/component/Works/index.js[m
+[1mdeleted file mode 100644[m
+[1mindex fcbe842..0000000[m
+[1m--- a/src/component/Works/index.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,18 +0,0 @@[m
+[31m-import React,{Component} from 'react';[m
+[31m-import {graphql} from 'react-apollo';[m
+[31m-import gql from 'graphql-tag';[m
+[31m-[m
+[31m-[m
+[31m-const listWorksQuery = gql` [m
+[31m-      query GetWorks($CategoryName: String){[m
+[31m-            listWorks(CategoryName: $CategoryName){[m
+[31m-                  _id[m
+[31m-                  Workname[m
+[31m-                  CoverImage[m
+[31m-            }[m
+[31m-      }[m
+[31m-     `;[m
+[31m-[m
+[31m-export default class listWorksComponent extends Component{[m
+[31m-    [m
+[31m-}[m
+\ No newline at end of file[m
