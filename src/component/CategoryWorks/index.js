@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 
+import ContentLoader, { Rect } from 'react-content-loader';
 import '../../Bulmacss/bulma.css';
 const CategoryWorksQuery = gql`
 query {
@@ -16,7 +17,11 @@ class CategoryWorksComponent extends Component{
    
     render(){
         if (this.props.data.loading) {
-          return (<div></div>)
+          return (
+          <ContentLoader height={140} speed={1} primaryColor={'#f3f3f3'} secondaryColor={'#ecebeb'}>
+           <Rect x={50} y={80} height={10} radius={5} width={300} />
+          </ContentLoader>
+    )
          }
 
         if (this.props.data.error) {

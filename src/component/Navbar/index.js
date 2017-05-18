@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
 import '../../Bulmacss/bulma.css';
 import './index.css';
 
@@ -9,7 +10,7 @@ export default class NavbarComponent extends Component{
               <div className="container">
                 <div className="nav-left">
                   <a className="nav-item">
-                    B2B Product
+                    <Link to='/'>B2B Product</Link>
                   </a>
                 </div>
            <label htmlFor="menu-toggle" className="nav-toggle">
