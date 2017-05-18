@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 
-import NavbarComponent from '../Navbar/index';
-import {Grid,Row,Col,Thumbnail} from 'react-bootstrap';
-
+import '../../Bulmacss/bulma.css';
 const CategoryWorksQuery = gql`
 query {
      listCategory{
@@ -26,21 +24,20 @@ class CategoryWorksComponent extends Component{
          }
         return(
             <div>
-            <Grid>
-             <Row>
+                <br/>
+                <br/>
+            <div className="columns margin">
                {this.props.data.listCategory.map((data,key) =>{
                   return( 
-                    <div key={key}>
-                    <Link to={{ pathname: '/UnitCategory/'+ data.Name.toString() }}>
-                    <Col xs={6} md={4}>
-                    <Thumbnail alt="171x180" src={data.Image.toString()} />
-                   </Col>
-                   </Link>
-                   </div>
+                     
+                      <div className="column is-2" key={key}>
+                       <Link to={{ pathname: '/UnitCategory/'+ data.Name.toString() }}>
+                        <img src="https://i.ytimg.com/vi/PhYXIuG0jZY/maxresdefault.jpg" />
+                       </Link>
+                      </div>
                    )
                })}
-            </Row>
-           </Grid>
+           </div>
            </div>
         )
     }

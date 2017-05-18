@@ -2,8 +2,7 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
-import { withRouter } from 'react-router-dom';
-import {Grid,Row,Col,Thumbnail} from 'react-bootstrap';
+import '../../Bulmacss/bulma.css';
 
 const UnitCategoryWorksQuery = gql`
     query list($Name: String!){
@@ -29,21 +28,23 @@ class UnitCategoryWorksComponent extends Component{
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
         return(
-            <Grid>
-             <Row>
+           <div>
+                <br/>
+                <br/>
+            <div className="columns margin">
                {this.props.data.listUnitCategory.map((data,key) =>{
                   return( 
                     <div key={key}>
                       <Link to={{ pathname: '/listWorks/'+ data.Name.toString() }}>
-                       <Col xs={6} md={4}>
-                        <Thumbnail alt="171x180" src={data.Image.toString()} />
-                       </Col>
+                       <div className="column is-2">
+                        <img alt="171x180" src="https://i.ytimg.com/vi/PhYXIuG0jZY/maxresdefault.jpg" />
+                       </div>
                       </Link>
                    </div>
                    )
                })}
-            </Row>
-           </Grid>
+           </div>
+           </div>
         )
     }
 }
