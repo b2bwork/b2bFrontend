@@ -1,38 +1,68 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import '../../Bulmacss/bulma.css';
+
+import '../../../node_modules/antd/dist/antd.min.css'
+import { Menu, Icon , Modal , Form , Input , Checkbox } from 'antd';
+import AuthenModalCompomponent from '../AuthenModal/index';
 import './index.css';
 
-export default class NavbarComponent extends Component{
-    render(){
-        return (
-            <nav className="nav bg">
-              <div className="container">
-                <div className="nav-left">
-                  <a className="nav-item">
-                    <Link to='/'>B2B Product</Link>
-                  </a>
-                </div>
-           <label htmlFor="menu-toggle" className="nav-toggle">
-             <span></span>
-             <span></span>
-             <span></span>
-           </label>
-          <input type="checkbox" id="menu-toggle" className="is-hidden"/>
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 
-          <div className="nav-right nav-menu">
-            <a className="nav-item">
-              เข้าสู่ระบบ / สมัคร
-            </a>
-            <a className="nav-item">
-              เพิ่มงาน
-            </a>
-            <a className="nav-item">
-              แจ้งเตือน<i className="fa fa-bell" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      </nav>
-        )
-    }
+export default class NavbarComponent extends Component{
+  constructor(props){
+    super(props)
+    this.state = { visible: false }
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+  handleOk = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
+
+   render(){
+     return (
+       <div>
+         <Modal title="" visible={this.state.visible}
+         width={350} 
+         onOk={this.handleOk.bind(this)} 
+         onCancel={this.handleCancel.bind(this)}
+         footer= {[
+
+         ]}
+         >
+          <AuthenModalCompomponent/>
+        </Modal>
+        <Menu mode="horizontal" >
+        <Menu.Item key="logo">
+          <Link to='/'>B2B Product</Link>
+        </Menu.Item>
+        <Menu.Item key="auth">
+          <span onClick={this.showModal.bind(this)}><Icon type="key" />เข้าสู่ระบบ / สมัครสมาชิก</span>
+        </Menu.Item>
+        <Menu.Item key="addwork">
+          <span><Icon type="upload" />เพิ่มงาน</span>
+        </Menu.Item>
+        <SubMenu title={<span><Icon type="bell" />แจ้งเตือน</span>}>
+          <MenuItemGroup title="ข้อความ">
+            <Menu.Item key="setting:1">รับเขียนเว็บมั๊ย</Menu.Item>
+            <Menu.Item key="setting:2">เขียนโปรแกรมมั๊ย</Menu.Item>
+          </MenuItemGroup>
+        </SubMenu>
+      </Menu>
+
+       </div>
+     )
+   }
 }
