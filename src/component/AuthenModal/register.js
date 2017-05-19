@@ -3,22 +3,27 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import '../../../node_modules/antd/dist/antd.min.css'
-import { Form, Icon, Input, Button, Checkbox , Tabs } from 'antd';
-import RegisterComponent from './register';
+import { Form, Icon, Input, Button, Checkbox , Tabs , DatePicker } from 'antd';
+import enUS from '../../../node_modules/antd/lib/locale-provider/en_US';
 import './index.css';
 
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
 
-export default class AuthenModalCompomponent extends Component {
+export default class RegisterComponent extends Component {
   
   constructor(props){
      super(props)
      this.state = {
        Username: '',
-       Password: ''
+       Password: '',
+       Email: '',
+       Name: '',
+       BirthDate: ''
          }
   }
+
+
 
     render(){
         return(
@@ -32,8 +37,19 @@ export default class AuthenModalCompomponent extends Component {
                      placeholder="Password" onChange={(e) => this.setState({Password: e.target.value})}/>
             </FormItem>
             <FormItem>
-              <Button type="primary"> <Icon type="key"/> เข้าสู่ระบบ</Button>
+              <Input prefix={<Icon type="mail" style={{ fontSize: 16 }} />} 
+                     placeholder="Email" onChange={(e) => this.setState({Email: e.target.value})} />
             </FormItem>
+            <FormItem>
+              <Input prefix={<Icon type="smile-o" style={{ fontSize: 16 }} />} 
+                     placeholder="Realname" onChange={(e) => this.setState({Name: e.target.value})}/>
+            </FormItem>
+            <FormItem>
+              <DatePicker placeholder="Birth Date"/>
+            </FormItem>
+            <FormItem>
+              <Button type="primary"> <Icon type="key"/> สมัครสมาชิก</Button>
+            </FormItem> 
           </div>
           
         )
