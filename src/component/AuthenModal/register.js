@@ -1,16 +1,24 @@
 import React,{Component} from 'react';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { withRouter } from 'react-router-dom'
 
 import '../../../node_modules/antd/dist/antd.min.css'
-import { Form, Icon, Input, Button, Checkbox , Tabs , DatePicker } from 'antd';
-import enUS from '../../../node_modules/antd/lib/locale-provider/en_US';
+import { Form, Icon, Input, Button, Checkbox , Tabs , DatePicker , Row , Col } from 'antd';
+import NavbarComponent from '../Navbar/index';
 import './index.css';
 
 const FormItem = Form.Item;
-const TabPane = Tabs.TabPane;
 
-export default class RegisterComponent extends Component {
+const RegisterMutation = gql`
+ mutation RegisterUser( $Username: String!, $Password: String!, $Email: String!, $Name: String!, $BirthDate: String!){
+    register( Username: $Username,  Password: $Password, Email: $Email,  Name: $Name,  BirthDate: $BirthDate){
+      Username
+
+  }
+  }`;
+
+class RegisterComponent extends Component {
   
   constructor(props){
      super(props)
@@ -19,39 +27,60 @@ export default class RegisterComponent extends Component {
        Password: '',
        Email: '',
        Name: '',
-       BirthDate: ''
+       BirthDate: '',
+       Registered: ''
          }
   }
+
+  RegisterUser(){
+    const {Username , Password , Email , Name , BirthDate} = this.state;
+    this.props.mutate({
+      variables: {Username, Password, Email, Name, BirthDate}})
+    .then((e) => {
+      this.props.router.replace('/')
+    })
+  }
+
 
 
 
     render(){
         return(
-          <div className="FormSize">
-            <FormItem>
-              <Input prefix={<Icon type="user" style={{ fontSize: 16 }} />} 
-                     placeholder="Username" onChange={(e) => this.setState({Username: e.target.value})} />
-            </FormItem>
-            <FormItem>
-              <Input type="password" prefix={<Icon type="lock" style={{ fontSize: 16 }} />} 
-                     placeholder="Password" onChange={(e) => this.setState({Password: e.target.value})}/>
-            </FormItem>
-            <FormItem>
-              <Input prefix={<Icon type="mail" style={{ fontSize: 16 }} />} 
-                     placeholder="Email" onChange={(e) => this.setState({Email: e.target.value})} />
-            </FormItem>
-            <FormItem>
-              <Input prefix={<Icon type="smile-o" style={{ fontSize: 16 }} />} 
-                     placeholder="Realname" onChange={(e) => this.setState({Name: e.target.value})}/>
-            </FormItem>
-            <FormItem>
-              <DatePicker placeholder="Birth Date"/>
-            </FormItem>
-            <FormItem>
-              <Button type="primary"> <Icon type="key"/> สมัครสมาชิก</Button>
-            </FormItem> 
+          <div>
+           <NavbarComponent/>
+           <br/>
+            <Row>
+              <Col span={8} offset={8}>
+              <FormItem>
+               <Input prefix={<Icon type="user" style={{ fontSize: 16 }} />} 
+                     placeholder="  Username" onChange={(e) => this.setState({Username: e.target.value})} />
+              </FormItem>
+              <FormItem>
+               <Input type="password" prefix={<Icon type="lock" style={{ fontSize: 16 }} />} 
+                      placeholder="  Password" onChange={(e) => this.setState({Password: e.target.value})}/>
+              </FormItem>
+              <FormItem>
+               <Input type="email" prefix={<Icon type="mail" style={{ fontSize: 16 }} />} 
+                      placeholder="  Email" onChange={(e) => this.setState({Email: e.target.value})} />
+              </FormItem>
+              <FormItem>
+               <Input prefix={<Icon type="smile-o" style={{ fontSize: 16 }} />} 
+                      placeholder="  Realname" onChange={(e) => this.setState({Name: e.target.value})}/>
+              </FormItem>
+              <FormItem>
+               <DatePicker placeholder=" Birth Date" onChange={(data,dateString) => this.setState({BirthDate: dateString})}/>
+              </FormItem>
+              <FormItem>
+               <Button type="primary" onClick={this.RegisterUser.bind(this)}> <Icon type="key"/> สมัครสมาชิก</Button>
+               {this.state.Registered}
+              </FormItem> 
+              </Col>
+            </Row>
           </div>
           
         )
     }
 }
+
+const Register = graphql(RegisterMutation)(withRouter(RegisterComponent))
+export default Register
