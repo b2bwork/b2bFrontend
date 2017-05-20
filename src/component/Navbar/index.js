@@ -38,10 +38,7 @@ export default class NavbarComponent extends Component{
          width={350} 
          onOk={this.handleOk.bind(this)} 
          onCancel={this.handleCancel.bind(this)}
-         footer= {[
-
-         ]}
-         >
+         footer= {[]}>
           <AuthenModalCompomponent/>
         </Modal>
         <Menu mode="horizontal" >
