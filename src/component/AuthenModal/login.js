@@ -1,17 +1,24 @@
 import React,{Component} from 'react';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Link } from 'react-router-dom';
+import { Link , withRouter } from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css'
-import { Form, Icon, Input, Button, Checkbox , Tabs } from 'antd';
+import { Form, Icon, Input, Button, Checkbox  } from 'antd';
 import RegisterComponent from './register';
 import './index.css';
 
 const FormItem = Form.Item;
-const TabPane = Tabs.TabPane;
 
-export default class LoginComponent extends Component {
+const loginMutation = gql`
+      mutation LoginUser($Username: String! , $Password: String!){
+        login( Username: $Username ,Password: $Password ){
+                  _id
+        }
+      } 
+     `;
+
+class LoginComponent extends Component {
   
   constructor(props){
      super(props)
@@ -19,6 +26,17 @@ export default class LoginComponent extends Component {
        Username: '',
        Password: ''
          }
+  }
+
+  login(){
+    const {Username , Password} = this.state;
+    this.props.mutate({
+      variables: {Username, Password}})
+    .then((login) => {
+        localStorage.setItem('UserID',login.data.login._id);
+        console.log(localStorage.getItem('UserID'))
+        this.props.history.push('/loged');
+    })
   }
 
     render(){
@@ -33,7 +51,8 @@ export default class LoginComponent extends Component {
                      placeholder="Password" onChange={(e) => this.setState({Password: e.target.value})}/>
             </FormItem>
             <FormItem>
-              <Button className="spaceButton" type="primary"> <Icon type="key"/> เข้าสู่ระบบ</Button>
+              <Button className="spaceButton" type="primary" onClick={this.login.bind(this)}> 
+                <Icon type="key"/> เข้าสู่ระบบ</Button>
               <Link to="/Register"><Button className="spaceButton"><Icon type="unlock" />สมัครสมาชิก</Button></Link>
             </FormItem>
           </div>
@@ -41,3 +60,6 @@ export default class LoginComponent extends Component {
         )
     }
 }
+
+const Login = graphql(loginMutation)(withRouter(LoginComponent));
+export default Login;
