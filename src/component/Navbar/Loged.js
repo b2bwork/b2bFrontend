@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link , withRouter} from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css'
 import { Menu, Icon , Modal , Form , Input , Checkbox } from 'antd';
@@ -10,10 +10,15 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const MenuItem = Menu.Item;
 
-export default class LogedComponent extends Component{
+class LogedComponent extends Component{
   constructor(props){
     super(props)
     this.state = { visible: false}
+  }
+
+  Logout(){
+      localStorage.removeItem('UserID');
+      this.props.history.push('/logout');
   }
 
    render(){
@@ -34,7 +39,7 @@ export default class LogedComponent extends Component{
           </MenuItemGroup>
         </SubMenu>
         <MenuItem key="logout" >
-          <span><Icon type="logout" />ออกจากระบบ</span>
+          <span onClick={this.Logout.bind(this)}><Icon type="logout" />ออกจากระบบ</span>
         </MenuItem>
       </Menu>
 
@@ -42,3 +47,5 @@ export default class LogedComponent extends Component{
      )
    }
 }
+
+export default withRouter(LogedComponent);

@@ -24,7 +24,8 @@ class LoginComponent extends Component {
      super(props)
      this.state = {
        Username: '',
-       Password: ''
+       Password: '',
+       WrongAuthen: false
          }
   }
 
@@ -33,10 +34,11 @@ class LoginComponent extends Component {
     this.props.mutate({
       variables: {Username, Password}})
     .then((login) => {
-        localStorage.setItem('UserID',login.data.login._id);
-        console.log(localStorage.getItem('UserID'))
-        this.props.history.push('/loged');
-    })
+            localStorage.setItem('UserID',login.data.login._id);
+           this.props.history.push('/loged');
+    }).catch((error) => {
+        this.setState({WrongAuthen: true});
+      });
   }
 
     render(){

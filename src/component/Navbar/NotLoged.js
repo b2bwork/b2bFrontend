@@ -2,12 +2,11 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css'
-import { Menu, Icon , Modal , Form , Input , Checkbox } from 'antd';
+import { Menu, Icon , Modal } from 'antd';
 import AuthenModalCompomponent from '../AuthenModal/index';
 import './index.css';
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 const MenuItem = Menu.Item;
 
 export default class LogedComponent extends Component{
