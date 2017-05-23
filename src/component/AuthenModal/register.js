@@ -37,7 +37,9 @@ class RegisterComponent extends Component {
     this.props.mutate({
       variables: {Username, Password, Email, Name, BirthDate}})
     .then((e) => {
-      this.props.router.replace('/registered')
+      if(e._id != null){
+        this.props.router.replace('/registered')
+      }
     })
   }
 
