@@ -38,7 +38,7 @@ class CategoryWorksComponent extends Component{
                      
                       <div className="column is-2" key={key}>
                        <Link to={{ pathname: '/UnitCategory/'+ data.Name.toString() }}>
-                        <img src="https://i.ytimg.com/vi/PhYXIuG0jZY/maxresdefault.jpg" />
+                        <img src={data.Image} />
                        </Link>
                       </div>
                    )
