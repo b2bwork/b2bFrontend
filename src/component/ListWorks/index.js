@@ -2,6 +2,11 @@ import React,{Component} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
+import Imageww from './16406665_1738459213134539_3337966289851666384_n.jpg';
+
+import NavbarComponent from '../Navbar/index';
+import { Row , Col , Icon} from 'antd';
+import '../../../node_modules/antd/dist/antd.min.css';
 
 
 const listWorksQuery = gql` 
@@ -31,26 +36,26 @@ class listWorksComponent extends Component{
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
         return(
-            <Grid>
+             <div>
+              <NavbarComponent/>
+             <br/>
+             <br/>
              <Row>
                {this.props.data.listWorks.map((data,key) =>{
                   return( 
                     <div key={key}>
                       <Link to={{ pathname: '/DetailWork/'+ data._id }}>
-                       <Col xs={4} md={2}>
-                        <Thumbnail alt="171x180" src={data.CoverImage} >
+                       <Col md={4} offset={1}>
+                        <img src={Imageww} width="100%"/>
                         <h3>{data.WorkName}</h3>
-                        <p className="text-right">
-                          <i className="fa fa-shopping-cart" aria-hidden="true"> {"  "+data.Queue}</i>
-                        </p>
-                        </Thumbnail>
+                        <p><span><Icon type="shopping"/>{"  "+data.Queue}</span></p>
                        </Col>
                       </Link>
                    </div>
                    )
                })}
             </Row>
-           </Grid>
+            </div>
         )
     }
 }
