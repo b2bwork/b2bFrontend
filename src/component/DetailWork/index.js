@@ -2,9 +2,18 @@ import React,{Component} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
-import {Grid,Row,Col,Carousel,Table,Button} from 'react-bootstrap';
-import './index.css';
+
+
+import {Row,Col,Carousel , Button} from 'antd';
+import ContentLoader, { Rect } from 'react-content-loader';
+import {Table} from 'react-bootstrap';
+
+
 import AddReviewComponent from '../AddReview/index';
+
+
+import '../../../node_modules/antd/dist/antd.min.css';
+import './index.css';
 
 const DetailWorkQuery = gql`
       query GetDetailWork($WorkId: String){
@@ -41,7 +50,11 @@ class DetailWorkComponent extends Component {
 
     render(){
         if (this.props.data.loading) {
-          return (<div></div>)
+          return (
+          <ContentLoader height={140} speed={1} primaryColor={'#f3f3f3'} secondaryColor={'#ecebeb'}>
+           <Rect x={50} y={80} height={10} radius={5} width={300} />
+          </ContentLoader>
+    )
          }
 
         if (this.props.data.error) {
@@ -49,16 +62,12 @@ class DetailWorkComponent extends Component {
          }
         return(
            <div className="DetailWork">
-            <Grid>
              <Row className="show-grid">
-               <Col xs={12} md={6} bsClass="btn-detail">
-               <div className="detail col-md-6 col-xs-12">
-                <Carousel>
+               <Col md={12}>
+                <Carousel effect="fade">
                     {this.props.data.DetailWork.Image.map((image,key) =>{
                         return(
-                 <Carousel.Item key={key}>
-                  <img className="text-center"width={300} height={300} alt="900x500" src={image}/>
-                 </Carousel.Item>
+                         <img src={image}/>
                         )
                     })}
                 </Carousel>
@@ -84,16 +93,15 @@ class DetailWorkComponent extends Component {
                 <h3>ประสบการณ์การทำงาน</h3>
                 <p>{this.props.data.DetailWork.ExperienceWorker}</p>
                </div>
-               </div>
                </Col>
-               <Col xs={12} md={6} bsClass="btn-detail">
-                <div className="col-md-6 col-xs-12">
+               <Col md={16}>
+                  <Col md={6}>
                     <div className="col-md-4 text-right">
                         <i className="fa fa-shopping-cart" aria-hidden="true">
                              {"  "+this.props.data.DetailWork.Queue}
                         </i>
                         </div><br/>
-                    <Button bsStyle="primary">คุยกับ freelance</Button>
+                    <Button type="primary">คุยกับ freelance</Button>
                     <div className="col-md-6">
                         <AddReviewComponent/>
                         <h3>รีวิว</h3>
@@ -108,11 +116,11 @@ class DetailWorkComponent extends Component {
                            )
                         })}
                         </div>
-                    </div>
+                        
                 </div>
+                </Col>
                </Col>
              </Row>
-            </Grid>
           </div>
         )
     }
