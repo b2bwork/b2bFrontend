@@ -32,18 +32,18 @@ class CategoryWorksComponent extends Component{
             <div>
                 <br/>
                 <br/>
-            <div className="columns margin">
+                <Row>
                {this.props.data.listCategory.map((data,key) =>{
                   return( 
                      
-                      <div className="column is-2" key={key}>
+                      <Col md={6} key={key}>
                        <Link to={{ pathname: '/UnitCategory/'+ data.Name.toString() }}>
                         <img src={data.Image} />
                        </Link>
-                      </div>
+                      </Col>
                    )
                })}
-           </div>
+               </Row>
            </div>
         )
     }

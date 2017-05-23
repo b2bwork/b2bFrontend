@@ -44,7 +44,7 @@ class UnitCategoryWorksComponent extends Component{
                {this.props.data.listUnitCategory.map((data,key) =>{
                   return( 
                       <Link to={{ pathname: '/listWorks/'+ data.Name.toString() }}>
-                        <Col md={6}>
+                        <Col md={6} key={key}>
                          <img src={data.Image} />
                         </Col>
                       </Link>
