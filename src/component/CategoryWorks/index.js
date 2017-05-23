@@ -4,7 +4,8 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 
 import ContentLoader, { Rect } from 'react-content-loader';
-import '../../Bulmacss/bulma.css';
+import '../../../node_modules/antd/dist/antd.min.css';
+import {Row , Col} from 'antd';
 const CategoryWorksQuery = gql`
 query {
      listCategory{
