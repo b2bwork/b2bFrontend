@@ -5,7 +5,6 @@ import { Link , withRouter } from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css'
 import { Form, Icon, Input, Button, Checkbox  } from 'antd';
-import RegisterComponent from './register';
 import './index.css';
 
 const FormItem = Form.Item;
