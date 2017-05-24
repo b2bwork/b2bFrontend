@@ -62,19 +62,19 @@ class DetailWorkComponent extends Component {
          }
         return(
            <div className="DetailWork">
-             <Row className="show-grid">
+             <Row>
                <Col md={12}>
                 <Carousel effect="fade">
                     {this.props.data.DetailWork.Image.map((image,key) =>{
                         return(
-                         <img src={image}/>
+                         <img src={image} width="100%" height="100%"/>
                         )
                     })}
                 </Carousel>
                <h2 className="text-center">{this.props.data.DetailWork.WorkName}หหห</h2>
                <div>
                 <h3>ข้อมูลเกี่ยวกับราคา</h3>
-                <Table responsive hover>
+                <Table >
                  <thead>
                   <tr>
                     <th>ราคา</th>
@@ -94,7 +94,7 @@ class DetailWorkComponent extends Component {
                 <p>{this.props.data.DetailWork.ExperienceWorker}</p>
                </div>
                </Col>
-               <Col md={16}>
+               <Col md={10} offset={2}>
                   <Col md={6}>
                     <div className="col-md-4 text-right">
                         <i className="fa fa-shopping-cart" aria-hidden="true">
@@ -102,10 +102,9 @@ class DetailWorkComponent extends Component {
                         </i>
                         </div><br/>
                     <Button type="primary">คุยกับ freelance</Button>
-                    <div className="col-md-6">
+                    <Col md={24}>
                         <AddReviewComponent/>
                         <h3>รีวิว</h3>
-                        <div className="col-md-12" >
                         {this.props.data.listReview.map((data,key) => {
                            return(
                                    <p key={key}>
@@ -114,10 +113,8 @@ class DetailWorkComponent extends Component {
                                     &nbsp;&nbsp;{data.Reviewdata}
                                    </p>
                            )
-                        })}
-                        </div>
-                        
-                </div>
+                        })}                        
+                </Col>
                 </Col>
                </Col>
              </Row>

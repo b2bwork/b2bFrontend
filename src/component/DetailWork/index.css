@@ -4,3 +4,13 @@
 .DetailWork{
     margin-top: 20px;
 }
+
+.ant-carousel .slick-slide{
+    text-align: center;
+    height: 40%;
+    line-height: 100%;
+    background: blue;
+    color: #fff;
+    overflow: hidden;
+    width: 70%;
+}
