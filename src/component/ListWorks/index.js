@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
+import ContentLoader, { Rect } from 'react-content-loader';
 import Imageww from './16406665_1738459213134539_3337966289851666384_n.jpg';
 
 import NavbarComponent from '../Navbar/index';
@@ -21,15 +22,15 @@ const listWorksQuery = gql`
      `;
 
 class listWorksComponent extends Component{
-    constructor(props){
-        super(props);
-    }
-    
    
     render(){
       
         if (this.props.data.loading) {
-          return (<div></div>)
+          return (
+          <ContentLoader height={140} speed={1} primaryColor={'#f3f3f3'} secondaryColor={'#ecebeb'}>
+           <Rect x={50} y={80} height={10} radius={5} width={300} />
+          </ContentLoader>
+          )
          }
 
         if (this.props.data.error) {
@@ -46,7 +47,7 @@ class listWorksComponent extends Component{
                     <div key={key}>
                       <Link to={{ pathname: '/DetailWork/'+ data._id }}>
                        <Col md={4} offset={1}>
-                        <img src={Imageww} width="100%"/>
+                        <img src={Imageww} width="100%" alt=""/>
                         <h3>{data.WorkName}</h3>
                         <p><span><Icon type="shopping"/>{"  "+data.Queue}</span></p>
                        </Col>
