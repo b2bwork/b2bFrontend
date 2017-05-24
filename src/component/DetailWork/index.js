@@ -44,9 +44,6 @@ const DetailWorkQuery = gql`
       }
 `;
 class DetailWorkComponent extends Component {
-    constructor(props){
-        super(props);
-    }
 
     render(){
         if (this.props.data.loading) {
@@ -54,7 +51,7 @@ class DetailWorkComponent extends Component {
           <ContentLoader height={140} speed={1} primaryColor={'#f3f3f3'} secondaryColor={'#ecebeb'}>
            <Rect x={50} y={80} height={10} radius={5} width={300} />
           </ContentLoader>
-    )
+          )
          }
 
         if (this.props.data.error) {
@@ -67,7 +64,7 @@ class DetailWorkComponent extends Component {
                 <Carousel effect="fade">
                     {this.props.data.DetailWork.Image.map((image,key) =>{
                         return(
-                         <img src={image} width="100%" height="100%"/>
+                         <img src={image} width="100%" height="100%" alt=""/>
                         )
                     })}
                 </Carousel>
@@ -108,7 +105,7 @@ class DetailWorkComponent extends Component {
                         {this.props.data.listReview.map((data,key) => {
                            return(
                                    <p key={key}>
-                                    <img width={50} height={50} src={data.ReviewerImage}/>
+                                    <img width={50} height={50} src={data.ReviewerImage} alt=""/>
                                     &nbsp;&nbsp;&nbsp;&nbsp;{data.ReviewerName}<br/>
                                     &nbsp;&nbsp;{data.Reviewdata}
                                    </p>
