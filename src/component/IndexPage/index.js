@@ -4,9 +4,7 @@ import CategoryWorksComponent from '../CategoryWorks/index';
 
 export default class IndexPageComponent extends Component{
 
-    constructor(props){
-        super(props);
-    }
+
     render(){
         return (
             <div>
