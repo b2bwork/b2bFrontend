@@ -2,8 +2,7 @@ import React,{Component} from 'react';
 import {Link , withRouter} from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css'
-import { Menu, Icon , Modal , Form , Input , Checkbox } from 'antd';
-import AuthenModalCompomponent from '../AuthenModal/index';
+import { Menu , Icon } from 'antd';
 import './index.css';
 
 const SubMenu = Menu.SubMenu;

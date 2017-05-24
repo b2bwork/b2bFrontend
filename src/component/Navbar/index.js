@@ -7,13 +7,13 @@ import NotLogedComponent from './NotLoged'
 export default class NavbarComponent extends Component{
   constructor(props){
     super(props)
-    if(localStorage.getItem('UserID') != null){
+    if(localStorage.getItem('UserID') !== null){
       this.setState({Loged: true});
       this.Loged = true;
     }
   }
    render(){
-     if(this.Loged == true){
+     if(this.Loged === true){
        return(
           <LogedComponent/>
        )
