@@ -3,12 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import ReactStars from 'react-stars';
-import Dropzone from 'react-dropzone';
-import DropzoneComponent from 'react-dropzone-component';
 import './index.css';
-import '../../../node_modules/react-dropzone-component/styles/filepicker.css'
-import '../../../node_modules/dropzone/dist/min/dropzone.min.css'
-import {Button,Modal,FormGroup,ControlLabel,FormControl,Form} from 'react-bootstrap';
 
 
 const AddReviewQuery = gql`
