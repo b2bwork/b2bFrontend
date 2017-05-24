@@ -17,9 +17,6 @@ const UnitCategoryWorksQuery = gql`
           }
 `;
 class UnitCategoryWorksComponent extends Component{
-    constructor(props){
-        super(props);
-    }
     
    
     render(){
@@ -45,7 +42,7 @@ class UnitCategoryWorksComponent extends Component{
                   return( 
                       <Link to={{ pathname: '/listWorks/'+ data.Name.toString() }}>
                         <Col md={6} key={key}>
-                         <img src={data.Image} />
+                         <img src={data.Image} alt=""/>
                         </Col>
                       </Link>
                    )
