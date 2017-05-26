@@ -60,7 +60,7 @@ class DetailWorkComponent extends Component {
         return(
            <div className="DetailWork">
              <Row>
-               <Col md={12}>
+               <Col md={24}>
                 <Carousel effect="fade">
                     {this.props.data.DetailWork.Image.map((image,key) =>{
                         return(
@@ -68,37 +68,32 @@ class DetailWorkComponent extends Component {
                         )
                     })}
                 </Carousel>
-               <h2 className="text-center">{this.props.data.DetailWork.WorkName}หหห</h2>
+                <Col md={16} offset={4}>
+                <h2 className="text-center">{this.props.data.DetailWork.WorkName}หหห</h2>
+               <br/>
                <div>
                 <h3>ข้อมูลเกี่ยวกับราคา</h3>
-                <Table >
-                 <thead>
+                <table>
                   <tr>
                     <th>ราคา</th>
                     <th>ระยะเวลา</th>
                     </tr>
-                 </thead>
                  <tbody>
                   <tr>
                    <td>{this.props.data.DetailWork.Price} บาท</td>
                    <td>{this.props.data.DetailWork.Workdays} วัน</td>
                   </tr>
                  </tbody>
-                </Table>
+                </table>
                 <h3>ขอบเขตของงาน</h3>
                 <p>{this.props.data.DetailWork.ScopeWork}</p>
                 <h3>ประสบการณ์การทำงาน</h3>
                 <p>{this.props.data.DetailWork.ExperienceWorker}</p>
                </div>
+                </Col>
                </Col>
                <Col md={10} offset={2}>
                   <Col md={6}>
-                    <div className="col-md-4 text-right">
-                        <i className="fa fa-shopping-cart" aria-hidden="true">
-                             {"  "+this.props.data.DetailWork.Queue}
-                        </i>
-                        </div><br/>
-                    <Button type="primary">คุยกับ freelance</Button>
                     <Col md={24}>
                         <AddReviewComponent/>
                         <h3>รีวิว</h3>
