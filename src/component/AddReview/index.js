@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
-import ReactStars from 'react-stars';
+import '../../../node_modules/antd/dist/antd.min.css';
+import {Button , Rate , Modal} from 'antd';
 import './index.css';
 
 
@@ -21,8 +22,9 @@ class AddReviewComponent extends Component{
              WorkId: "",
              ReviewerName: localStorage.getItem('UserName'),
              Reviewdata: "",
-             Star: "",
+             Star: 0,
              Images: []
+
     };
     }
     
@@ -41,19 +43,12 @@ class AddReviewComponent extends Component{
     addReview(){
 
     }
-    onDrop(Images) {
-    this.setState({
-      Images
-    });
-  }
+
     render(){
-      let componentConfig = { postUrl: 'no-url' };
-      let djsConfig = { autoProcessQueue: false }
       return(
           <div>
           <Button
-          bsStyle="primary"
-          bsSize="large"
+          type="primary"
           onClick={this.open.bind(this)}>
           เขียนรีวิว
         </Button>
@@ -63,7 +58,7 @@ class AddReviewComponent extends Component{
             <Modal.Title>เขียนรีวิว</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <ReactStars count={5} size={24}  color2={'#ffd700'} />
+              <Rate onChange={(rate) => this.setState({Star: rate.target.value})}/>
           <div class="form-group">
            <label class="col-sm-2 control-label">รายละเอียด</label>
            <div class="col-sm-10">
@@ -71,7 +66,6 @@ class AddReviewComponent extends Component{
            </div>
            </div>
            <label class="col-sm-2 control-label">รูปภาพงาน</label>
-              <DropzoneComponent config={componentConfig} djsConfig={djsConfig} />
           </Modal.Body>
         </Modal>
         </div>
