@@ -28,24 +28,28 @@ class RegisterComponent extends Component {
        Email: '',
        Name: '',
        BirthDate: '',
-       Registered: ''
+       Registered: '',
+       nullInput: ''
          }
   }
 
   RegisterUser(){
     const {Username , Password , Email , Name , BirthDate} = this.state;
-    this.props.mutate({
-      variables: {Username, Password, Email, Name, BirthDate}})
-    .then((e) => {
-
-      if(e.data.register._id === `registered`){
-        this.props.history.push('/registered');
-        
-      }else if(e.data.register._id === `hasUser`){
-          this.setState({Registered: `ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว`});
-
-      }
-    })
+    if(Username != null && Password != null && Email != null &&  Name != null &&  BirthDate != null){
+       this.props.mutate({
+          variables: {Username, Password, Email, Name, BirthDate}}).then((e) => {
+       
+             if(e.data.register._id === `registered`){
+               this.props.history.push('/registered');
+               
+             }else if(e.data.register._id === `hasUser`){
+                 this.setState({Registered: `ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว`});
+       
+             }
+           })
+    }else{
+      this.setState({nullInput: 'คุณใส่ข้อมูลไม่ครบ'});
+    }
   }
 
 
@@ -60,7 +64,7 @@ class RegisterComponent extends Component {
               <Col span={8} offset={8}>
               <FormItem>
                <Input prefix={<Icon type="user" style={{ fontSize: 16 }} />} 
-                     placeholder="  Username" onChange={(e) => this.setState({Username: e.target.value})} />
+                      placeholder="  Username" onChange={(e) => this.setState({Username: e.target.value})} />
               </FormItem>
               <FormItem>
                <Input type="password" prefix={<Icon type="lock" style={{ fontSize: 16 }} />} 
@@ -78,8 +82,9 @@ class RegisterComponent extends Component {
                <DatePicker placeholder=" Birth Date" onChange={(data,dateString) => this.setState({BirthDate: dateString})}/>
               </FormItem>
               <FormItem>
-               <Button type="primary" onClick={this.RegisterUser.bind(this)}> <Icon type="key"/> สมัครสมาชิก</Button>
-                 <h2 className="repeatUser" >{this.state.Registered}</h2>
+               <Button type="primary" onClick={this.RegisterUser.bind(this)} size="large"> <Icon type="key"/> สมัครสมาชิก</Button>
+                 <h2 className="WrongInput" >{this.state.Registered}</h2>
+                 <h2 className="WrongInput" >{this.state.nullInput}</h2>
               </FormItem> 
               </Col>
             </Row>
