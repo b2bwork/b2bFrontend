@@ -33,11 +33,12 @@ const addWorkMutation = gql`
                       }
        }
 
-       {
-           listCategoryWork($CategoryName: String! ){
-               listUnitCategory(CategoryName: $CategoryName)
-           }   
-       }
+       query {
+            listCategory{
+                Name
+                Image
+     }
+}
 `;
 
 class AddWorkComponent extends Component {
