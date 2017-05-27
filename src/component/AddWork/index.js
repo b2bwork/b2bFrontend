@@ -63,6 +63,17 @@ class AddWorkComponent extends Component {
     }
     
     addWork(){
+        const {CategoryName ,
+               WorkName , 
+               CoverImage , 
+               WorkerName , 
+               WorkerId , 
+               ScopeWork , 
+               Workdays  , 
+               DetailWork , 
+               ExperienceWorker , 
+               Price , 
+               TagWork } = this.state;
         
     }
 
