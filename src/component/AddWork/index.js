@@ -18,19 +18,25 @@ const addWorkMutation = gql`
                         $Price: Int , 
                         $TagWork : [String]){
 
-           InsertWork(CategoryName: String! , 
-                      WorkName: String! , 
-                      CoverImage: String! , 
-                      WorkerName: String! , 
-                      WorkerId: String! , 
-                      ScopeWork: String! , 
-                      Workdays : Int! , 
-                      DetailWork: String! , 
-                      ExperienceWorker: String! , 
-                      Price: Int! , 
-                      TagWork : [String]! ){
+           InsertWork(CategoryName: $CategoryName ,
+                      WorkName: $WorkName , 
+                      CoverImage: $CoverImage , 
+                      WorkerName: $WorkerName , 
+                      WorkerId: $WorkerId , 
+                      ScopeWork: $ScopeWork , 
+                      Workdays : $Workdays , 
+                      DetailWork: $DetailWork , 
+                      ExperienceWorker: $ExperienceWorker , 
+                      Price: $Price , 
+                      TagWork : [$TagWork] ){
                           _id
                       }
+       }
+
+       {
+           listCategoryWork($CategoryName: String! ){
+               listUnitCategory(CategoryName: $CategoryName)
+           }   
        }
 `;
 
