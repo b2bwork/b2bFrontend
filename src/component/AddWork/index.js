@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 
 import '../../../node_modules/antd/dist/antd.min.css';
-import {} from 'antd';
+import { Button , Input , Upload} from 'antd';
 
 const addWorkMutation = gql`
        mutation addwork($CategoryName: String , 
@@ -42,6 +42,30 @@ const addWorkMutation = gql`
 `;
 
 class AddWorkComponent extends Component {
+
+    constructor(props){
+        super(props)
+
+    this.state = {
+        CategoryName: '' ,
+        WorkName: '' , 
+        CoverImage: '' , 
+        WorkerName: '' , 
+        WorkerId: '' , 
+        ScopeWork: '' , 
+        Workdays : '' , 
+        DetailWork: '' , 
+        ExperienceWorker: '' , 
+        Price: '' , 
+        TagWork : []
+        
+    }
+    }
+    
+    addWork(){
+        
+    }
+
     render() {
         return (
             <div>
