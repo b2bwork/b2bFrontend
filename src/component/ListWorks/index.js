@@ -3,7 +3,6 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import ContentLoader, { Rect } from 'react-content-loader';
-import Imageww from './16406665_1738459213134539_3337966289851666384_n.jpg';
 
 import NavbarComponent from '../Navbar/index';
 import { Row , Col , Icon} from 'antd';
@@ -47,7 +46,7 @@ class listWorksComponent extends Component{
                     <div key={key}>
                       <Link to={{ pathname: '/DetailWork/'+ data._id }}>
                        <Col md={4} offset={1}>
-                        <img src={Imageww} width="100%" alt=""/>
+                        <img src={data.CoverImage} width="100%" alt=""/>
                         <h3>{data.WorkName}</h3>
                         <p><span><Icon type="shopping"/>{"  "+data.Queue}</span></p>
                        </Col>
