@@ -57,7 +57,8 @@ class AddWorkComponent extends Component {
         DetailWork: '' , 
         ExperienceWorker: '' , 
         Price: '' , 
-        TagWork : []
+        TagWork : [] ,
+        nullInput: ''
         
     }
     }
@@ -74,6 +75,40 @@ class AddWorkComponent extends Component {
                ExperienceWorker , 
                Price , 
                TagWork } = this.state;
+
+        if(CategoryName != null && 
+           WorkName != null &&
+           CoverImage != null && 
+           WorkerName != null && 
+           WorkerId != null && 
+           ScopeWork != null && 
+           Workdays  != null &&
+           DetailWork != null && 
+           ExperienceWorker != null && 
+           Price != null && 
+           TagWork.length >= 0){
+
+               this.props.mutate({
+                    variables: {CategoryName, 
+                                WorkName, 
+                                CoverImage, 
+                                WorkerName, 
+                                WorkerId ,
+                                ScopeWork ,
+                                Workdays ,
+                                DetailWork ,
+                                ExperienceWorker ,
+                                Price ,
+                                TagWork ,}
+                }
+                ).then((data) =>{
+                    this.setState({nullInput: 'เพิ่มงานเรียบร้อย'});
+                   
+               })
+
+               } else {
+                   this.setState({nullInput: 'กรอกข้อมูลไม่ครบ'});
+               }
         
     }
 
