@@ -37,7 +37,6 @@ class RegisterComponent extends Component {
     if(Username != null && Password != null && Email != null &&  Name != null &&  BirthDate != null){
        this.props.mutate({
           variables: {Username: Username, Password: Password, Email: Email, Name: Name, BirthDate: BirthDate}}).then((e) => {
-       
              if(e.data.register._id === `registered`){
                this.props.history.push('/registered');
                

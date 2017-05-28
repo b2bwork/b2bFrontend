@@ -116,8 +116,18 @@ class AddWorkComponent extends Component {
                       placeholder="ขอบเขตงาน" type="textarea" onChange={(e) => this.setState({ScopeWork: e.target.value})} />
                <br/>    
              </div>
+             <div>
              <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
                     placeholder="รายละเอียดงาน" type="textarea" onChange={(e) => this.setState({DetailWork: e.target.value})} />
+             </div>
+             <div>
+             <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
+                    placeholder="จำนวนวัน" onChange={(e) => this.setState({Workdays: e.target.value})} />
+             </div>
+             <div>
+             <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
+                    placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
+             </div>
             </Col>
         );
     }
