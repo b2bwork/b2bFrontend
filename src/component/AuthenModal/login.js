@@ -24,7 +24,7 @@ class LoginComponent extends Component {
      this.state = {
        Username: '',
        Password: '',
-       WrongAuthen: false
+       WrongAuthen: ''
          }
   }
 
@@ -36,7 +36,7 @@ class LoginComponent extends Component {
             localStorage.setItem('UserID',login.data.login._id);
            this.props.history.push('/loged');
     }).catch((error) => {
-        this.setState({WrongAuthen: true});
+        this.setState({WrongAuthen: 'ไม่มีชื่อผู้ใช้งานนี้'});
       });
   }
 
@@ -55,6 +55,7 @@ class LoginComponent extends Component {
               <Button className="spaceButton" type="primary" onClick={this.login.bind(this)}> 
                 <Icon type="key"/> เข้าสู่ระบบ</Button>
               <Link to="/Register"><Button className="spaceButton"><Icon type="unlock" />สมัครสมาชิก</Button></Link>
+              <h2 className="WrongInput">{this.state.WrongAuthen}</h2>
             </FormItem>
           </div>
           
