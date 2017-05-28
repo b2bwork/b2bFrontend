@@ -12,6 +12,7 @@ import UnitCategoryWorksComponent from './component/CategoryWorks/unitCategory';
 import DetailWork from './component/DetailWork/index';
 import Register from './component/AuthenModal/register';
 import registeredComponent from './component/AuthenModal/registerd';
+import addWork from './component/AddWork/index';
 
 
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route exact={true} path="/listWorks/:CategoryName" component={listWorksComponent}/>
           <Route exact={true} path="/DetailWork/:WorkId" component={DetailWork}/>
           <Route exact={true} path="/Register" component={Register}/>
+          <Route exact={true} path="/addWork" component={addWork}/>
           <Route exact={true} path="/logout" render={() => (<Redirect to="/"/>)}/>
           <Route exact={true} path="/loged" render={() => (<Redirect to="/"/>)}/>
           <Route exact={true} path="/registered" component={registeredComponent}/>
