@@ -29,7 +29,7 @@ class LogedComponent extends Component{
           <Link to='/'>B2B Product</Link>
         </MenuItem>
         <MenuItem key="addwork" >
-          <span><Icon type="upload" />เพิ่มงาน</span>
+          <Link to="/addWork"><span><Icon type="upload" />เพิ่มงาน</span></Link>
         </MenuItem>
         <SubMenu title={<span><Icon type="bell" />แจ้งเตือน</span>}>
           <MenuItemGroup title="ข้อความ" >
