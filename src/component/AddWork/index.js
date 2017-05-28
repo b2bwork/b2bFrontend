@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
+import {withRouter} from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css';
-import { Button , Input , Upload} from 'antd';
+import { Button , Input , Upload , Col , Row , Icon } from 'antd';
 
 const addWorkMutation = gql`
        mutation addwork($CategoryName: String , 
@@ -28,23 +29,17 @@ const addWorkMutation = gql`
                       DetailWork: $DetailWork , 
                       ExperienceWorker: $ExperienceWorker , 
                       Price: $Price , 
-                      TagWork : [$TagWork] ){
+                      TagWork : $TagWork ){
                           _id
                       }
        }
-
-       query {
-            listCategory{
-                Name
-                Image
-     }
-}
 `;
 
 class AddWorkComponent extends Component {
 
     constructor(props){
         super(props)
+
 
     this.state = {
         CategoryName: '' ,
@@ -99,7 +94,7 @@ class AddWorkComponent extends Component {
                                 DetailWork ,
                                 ExperienceWorker ,
                                 Price ,
-                                TagWork ,}
+                                TagWork }
                 }
                 ).then((data) =>{
                     this.setState({nullInput: 'เพิ่มงานเรียบร้อย'});
@@ -114,12 +109,19 @@ class AddWorkComponent extends Component {
 
     render() {
         return (
-            <div>
-                
-            </div>
+            <Col md={10} offset={3}>
+             <div>
+                 <i className="fa fa-money fa-3x" aria-hidden="true"></i>
+               <Input prefix={<Icon type="flag" style={{ fontSize: 16 }} />} 
+                      placeholder="ขอบเขตงาน" type="textarea" onChange={(e) => this.setState({ScopeWork: e.target.value})} />
+               <br/>    
+             </div>
+             <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
+                    placeholder="รายละเอียดงาน" type="textarea" onChange={(e) => this.setState({DetailWork: e.target.value})} />
+            </Col>
         );
     }
 }
 
-const addwork = graphql(addWorkMutation)(AddWorkComponent)
+const addwork = graphql(addWorkMutation)(withRouter(AddWorkComponent));
 export default addwork;
