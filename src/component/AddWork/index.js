@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import {withRouter} from 'react-router-dom';
 
 import '../../../node_modules/antd/dist/antd.min.css';
-import { Button , Input , Upload , Col , Row , Icon } from 'antd';
+import { Button , Input , Upload , Col , Row , Icon , Modal } from 'antd';
 
 const addWorkMutation = gql`
        mutation addwork($CategoryName: String , 
@@ -53,10 +53,29 @@ class AddWorkComponent extends Component {
         ExperienceWorker: '' , 
         Price: '' , 
         TagWork : [] ,
-        nullInput: ''
+        nullInput: '',
+        previewVisible: false,
+        previewImage: '',
+        fileList: [{
+          uid: -1,
+          name: 'test.png',
+          status: 'done',
+          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    }]
         
     }
+}
+
+     handleCancel(){ this.setState({ previewVisible: false })}
+
+     handlePreview (file) {
+       this.setState({
+        previewImage: file.url || file.thumbUrl,
+        previewVisible: true,
+     });
     }
+
+  handleChange ({ fileList }) {this.setState({ fileList })}
     
     addWork(){
         const {CategoryName ,
@@ -108,6 +127,13 @@ class AddWorkComponent extends Component {
     }
 
     render() {
+        const { previewVisible, previewImage, fileList } = this.state;
+        const uploadButton = (
+          <div>
+            <Icon type="plus" />
+            <div className="ant-upload-text">Upload</div>
+          </div>
+        );
         return (
             <Col md={10} offset={3}>
              <div>
@@ -128,8 +154,22 @@ class AddWorkComponent extends Component {
              <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
                     placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
              </div>
+             <div className="clearfix">
+              <Upload
+                action="//jsonplaceholder.typicode.com/posts/"
+                listType="picture-card"
+                fileList={fileList}
+                onPreview={this.handlePreview.bind(this)}
+                onChange={this.handleChange.bind(this)}
+              >
+                {fileList.length >= 7 ? null : uploadButton}
+              </Upload>
+              <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+                <img alt="example" style={{ width: '100%' }} src={previewImage} />
+              </Modal>
+            </div>
             </Col>
-        );
+        )
     }
 }
 
