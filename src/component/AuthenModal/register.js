@@ -14,7 +14,6 @@ const RegisterMutation = gql`
  mutation RegisterUser( $Username: String!, $Password: String!, $Email: String!, $Name: String!, $BirthDate: String!){
     register( Username: $Username,  Password: $Password, Email: $Email,  Name: $Name,  BirthDate: $BirthDate){
       _id
-
   }
   }`;
 
@@ -37,7 +36,7 @@ class RegisterComponent extends Component {
     const {Username , Password , Email , Name , BirthDate} = this.state;
     if(Username != null && Password != null && Email != null &&  Name != null &&  BirthDate != null){
        this.props.mutate({
-          variables: {Username, Password, Email, Name, BirthDate}}).then((e) => {
+          variables: {Username: Username, Password: Password, Email: Email, Name: Name, BirthDate: BirthDate}}).then((e) => {
        
              if(e.data.register._id === `registered`){
                this.props.history.push('/registered');
@@ -46,7 +45,7 @@ class RegisterComponent extends Component {
                  this.setState({Registered: `ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว`});
        
              }
-           })
+           }).catch((error)=> console.log(error))
     }else{
       this.setState({nullInput: 'คุณใส่ข้อมูลไม่ครบ'});
     }
