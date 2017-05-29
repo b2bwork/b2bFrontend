@@ -25,3 +25,8 @@
 .spaceButton{
   margin-left: 24px;
 }
+
+.googleButton{
+  background-color: red;
+  margin-top: 20px;
+}
