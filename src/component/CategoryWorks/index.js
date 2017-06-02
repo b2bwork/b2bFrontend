@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
-
 import ContentLoader, { Rect } from 'react-content-loader';
 import '../../../node_modules/antd/dist/antd.min.css';
 import {Row , Col} from 'antd';
@@ -38,7 +37,7 @@ class CategoryWorksComponent extends Component{
                      
                       <Col md={6} key={key}>
                        <Link to={{ pathname: '/UnitCategory/'+ data.Name.toString() }}>
-                        <img src={data.Image} alt=""/>
+                        <img src={data.Image} alt="" width="150px"/>
                        </Link>
                       </Col>
                    )
