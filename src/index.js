@@ -25,7 +25,7 @@ ReactDOM.render(
        <LocaleProvider locale={enUS}>
         <Router>
           <Switch>
-          <Route exact={true} path="/" component={IndexPageComponent}/>
+          <Route exact={true} path="/:TokenID" component={IndexPageComponent}/>
           <Route exact={true} path="/UnitCategory/:CategoryName" component={UnitCategoryWorksComponent}/>
           <Route exact={true} path="/listWorks/:CategoryName" component={listWorksComponent}/>
           <Route exact={true} path="/DetailWork/:WorkId" component={DetailWork}/>
