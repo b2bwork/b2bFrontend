@@ -13,6 +13,9 @@ class LogedComponent extends Component{
   constructor(props){
     super(props)
     this.state = { visible: false}
+    if(this.props.match.params.TokenID != null){
+      localStorage.setItem('UserId',this.props.match.params.TokenID);
+    }
   }
 
   Logout(){
