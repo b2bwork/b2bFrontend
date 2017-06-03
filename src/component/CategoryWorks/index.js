@@ -3,8 +3,10 @@ import {Link} from 'react-router-dom';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import ContentLoader, { Rect } from 'react-content-loader';
-import '../../../node_modules/antd/dist/antd.min.css';
 import {Row , Col} from 'antd';
+
+import '../../../node_modules/antd/dist/antd.min.css';
+import './index.css';
 const CategoryWorksQuery = gql`
 query {
      listCategory{
@@ -37,7 +39,9 @@ class CategoryWorksComponent extends Component{
                      
                       <Col md={6} key={key}>
                        <Link to={{ pathname: '/UnitCategory/'+ data.Name.toString() }}>
-                        <img src={data.Image} alt="" width="150px"/>
+                        <div className="image-margin">
+                          <img src={data.Image} alt="" width="150px"/>
+                        </div>
                        </Link>
                       </Col>
                    )

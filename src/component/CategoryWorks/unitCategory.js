@@ -5,8 +5,10 @@ import gql from 'graphql-tag';
 
 import ContentLoader, { Rect } from 'react-content-loader';
 import NavbarComponent from '../Navbar/index';
-import '../../../node_modules/antd/dist/antd.css';
 import { Row , Col } from 'antd'
+
+import '../../../node_modules/antd/dist/antd.css';
+import './index.css';
 
 const UnitCategoryWorksQuery = gql`
     query list($Name: String!){
@@ -42,7 +44,9 @@ class UnitCategoryWorksComponent extends Component{
                   return( 
                       <Link to={{ pathname: '/listWorks/'+ data.Name.toString() }}>
                         <Col md={6} key={key}>
-                         <img src={data.Image} alt="" width="150px"/>
+                         <div className="image-margin">
+                          <img src={data.Image} alt="" width="150px"/>
+                        </div>
                         </Col>
                       </Link>
                    )
