@@ -44,12 +44,10 @@ class LoginComponent extends Component {
         return(
           <div className="FormSize">
             <FormItem>
-              <Input prefix={<Icon type="user" style={{ fontSize: 16 }} />} 
-                     placeholder="Username" onChange={(e) => this.setState({Username: e.target.value})} />
+              <Input placeholder="Username" onChange={(e) => this.setState({Username: e.target.value})} />
             </FormItem>
             <FormItem>
-              <Input type="password" prefix={<Icon type="lock" style={{ fontSize: 16 }} />} 
-                     placeholder="Password" onChange={(e) => this.setState({Password: e.target.value})}/>
+              <Input placeholder="Password" onChange={(e) => this.setState({Password: e.target.value})}/>
             </FormItem>
             <FormItem>
               <Button className="spaceButton" type="primary" onClick={this.login.bind(this)}> 

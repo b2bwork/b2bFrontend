@@ -61,23 +61,19 @@ class RegisterComponent extends Component {
             <Row>
               <Col span={8} offset={8}>
               <FormItem>
-               <Input prefix={<Icon type="user" style={{ fontSize: 16 }} />} 
-                      placeholder="  Username" onChange={(e) => this.setState({Username: e.target.value})} />
+               <Input placeholder="  ชื่อผู้ใช้งาน   " onChange={(e) => this.setState({Username: e.target.value})} />
               </FormItem>
               <FormItem>
-               <Input type="password" prefix={<Icon type="lock" style={{ fontSize: 16 }} />} 
-                      placeholder="  Password" onChange={(e) => this.setState({Password: e.target.value})}/>
+               <Input placeholder="  รหัสผ่าน   " onChange={(e) => this.setState({Password: e.target.value})}/>
               </FormItem>
               <FormItem>
-               <Input type="email" prefix={<Icon type="mail" style={{ fontSize: 16 }} />} 
-                      placeholder="  Email" onChange={(e) => this.setState({Email: e.target.value})} />
+               <Input placeholder="  Email   " onChange={(e) => this.setState({Email: e.target.value})} />
               </FormItem>
               <FormItem>
-               <Input prefix={<Icon type="smile-o" style={{ fontSize: 16 }} />} 
-                      placeholder="  Realname" onChange={(e) => this.setState({Name: e.target.value})}/>
+               <Input placeholder="  ชื่อจริง   " onChange={(e) => this.setState({Name: e.target.value})}/>
               </FormItem>
               <FormItem>
-               <DatePicker placeholder=" Birth Date" onChange={(data,dateString) => this.setState({BirthDate: dateString})}/>
+               <DatePicker placeholder=" วันเกิด   " onChange={(data,dateString) => this.setState({BirthDate: dateString})}/>
               </FormItem>
               <FormItem>
                <Button type="primary" onClick={this.RegisterUser.bind(this)} size="large"> <Icon type="key"/> สมัครสมาชิก</Button>
