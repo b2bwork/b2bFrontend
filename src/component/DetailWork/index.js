@@ -10,6 +10,7 @@ import {Table} from 'react-bootstrap';
 
 
 import AddReviewComponent from '../AddReview/index';
+import NavbarComponent from '../Navbar/index';
 
 
 import '../../../node_modules/antd/dist/antd.min.css';
@@ -58,6 +59,10 @@ class DetailWorkComponent extends Component {
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
         return(
+          <div>
+            <NavbarComponent/>
+             <br/>
+             <br/>
            <div className="DetailWork">
              <Row>
                <Col md={24}>
@@ -111,6 +116,7 @@ class DetailWorkComponent extends Component {
                </Col>
              </Row>
           </div>
+        </div>
         )
     }
 }
