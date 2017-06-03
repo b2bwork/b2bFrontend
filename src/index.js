@@ -25,14 +25,13 @@ ReactDOM.render(
        <LocaleProvider locale={enUS}>
         <Router>
           <Switch>
-          <Route exact={true} path="/:TokenID" component={IndexPageComponent}/>
+          <Route exact={true} path="/" component={IndexPageComponent}/>
           <Route exact={true} path="/UnitCategory/:CategoryName" component={UnitCategoryWorksComponent}/>
           <Route exact={true} path="/listWorks/:CategoryName" component={listWorksComponent}/>
           <Route exact={true} path="/DetailWork/:WorkId" component={DetailWork}/>
           <Route exact={true} path="/Register" component={Register}/>
           <Route exact={true} path="/addWork" component={addWork}/>
-          <Route exact={true} path="/logout" render={() => (<Redirect to="/"/>)}/>
-          <Route exact={true} path="/loged" render={() => (<Redirect to="/"/>)}/>
+          <Route exact={true} path="/loged/:UserId" component={IndexPageComponent}/>
           <Route exact={true} path="/registered" component={registeredComponent}/>
           </Switch>
         </Router>

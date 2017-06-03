@@ -13,14 +13,15 @@ class LogedComponent extends Component{
   constructor(props){
     super(props)
     this.state = { visible: false}
-    if(this.props.match.params.TokenID != null){
-      localStorage.setItem('UserId',this.props.match.params.TokenID);
-    }
+    //console.log(this.props.match.params);
+    //if(this.props.match.params.UserId != null){
+      //localStorage.setItem('UserId',this.props.match.params.TokenID);
+    //}
   }
 
   Logout(){
       localStorage.removeItem('UserID');
-      this.props.history.push('/logout');
+      this.props.history.push('/');
   }
 
    render(){
