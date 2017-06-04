@@ -13,10 +13,6 @@ class LogedComponent extends Component{
   constructor(props){
     super(props)
     this.state = { visible: false}
-    //console.log(this.props.match.params);
-    //if(this.props.match.params.UserId != null){
-      //localStorage.setItem('UserId',this.props.match.params.TokenID);
-    //}
   }
 
   Logout(){

@@ -3,8 +3,12 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {withRouter} from 'react-router-dom';
 
+import { Button , Input , Col , Row , Icon , Modal } from 'antd';
+import DropzoneComponent from 'react-dropzone-component';
+
 import '../../../node_modules/antd/dist/antd.min.css';
-import { Button , Input , Upload , Col , Row , Icon , Modal } from 'antd';
+import './index.css';
+import '../../../node_modules/react-dropzone-component/styles/filepicker.css';
 
 const addWorkMutation = gql`
        mutation addwork($CategoryName: String , 
@@ -40,7 +44,6 @@ class AddWorkComponent extends Component {
     constructor(props){
         super(props)
 
-
     this.state = {
         CategoryName: '' ,
         WorkName: '' , 
@@ -54,28 +57,24 @@ class AddWorkComponent extends Component {
         Price: '' , 
         TagWork : [] ,
         nullInput: '',
-        previewVisible: false,
-        previewImage: '',
-        fileList: [{
-          uid: -1,
-          name: 'test.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }]
-        
     }
+
+    this.djsConfig = {
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/png,image/gif",
+            autoProcessQueue: false,
+            params: {
+                myParam: 'Hello from a parameter!',
+                anotherParam: 43
+            }
+        };
+
+        this.componentConfig = {
+            iconFiletypes: ['.jpg', '.png', '.gif'],
+            showFiletypeIcon: true,
+            postUrl: 'no-url'
+        };
 }
-
-     handleCancel(){ this.setState({ previewVisible: false })}
-
-     handlePreview (file) {
-       this.setState({
-        previewImage: file.url || file.thumbUrl,
-        previewVisible: true,
-     });
-    }
-
-  handleChange ({ fileList }) {this.setState({ fileList })}
     
     addWork(){
         const {CategoryName ,
@@ -128,12 +127,11 @@ class AddWorkComponent extends Component {
 
     render() {
         const { previewVisible, previewImage, fileList } = this.state;
-        const uploadButton = (
-          <div>
-            <Icon type="plus" />
-            <div className="ant-upload-text">Upload</div>
-          </div>
-        );
+        const componentConfig = {
+                        iconFiletypes: ['.jpg', '.png', '.gif'],
+                        showFiletypeIcon: true,
+                        postUrl: '/uploadHandler'
+                    };
         return (
             <Col md={10} offset={3}>
              <div>
@@ -155,18 +153,8 @@ class AddWorkComponent extends Component {
                     placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
              </div>
              <div className="clearfix">
-              <Upload
-                action="//jsonplaceholder.typicode.com/posts/"
-                listType="picture-card"
-                fileList={fileList}
-                onPreview={this.handlePreview.bind(this)}
-                onChange={this.handleChange.bind(this)}
-              >
-                {fileList.length >= 7 ? null : uploadButton}
-              </Upload>
-              <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-                <img alt="example" style={{ width: '100%' }} src={previewImage} />
-              </Modal>
+              <DropzoneComponent config={componentConfig}
+                       djsConfig={this.djsConfig} />
             </div>
             </Col>
         )
