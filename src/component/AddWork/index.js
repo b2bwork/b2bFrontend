@@ -5,10 +5,12 @@ import {withRouter} from 'react-router-dom';
 
 import { Button , Input , Col , Row , Icon , Modal } from 'antd';
 import DropzoneComponent from 'react-dropzone-component';
+import TagsInput from 'react-tagsinput';
 
 import '../../../node_modules/antd/dist/antd.min.css';
 import './index.css';
 import '../../../node_modules/react-dropzone-component/styles/filepicker.css';
+import '../../../node_modules/react-tagsinput/react-tagsinput.css';
 
 const addWorkMutation = gql`
        mutation addwork($CategoryName: String , 
@@ -84,7 +86,6 @@ class AddWorkComponent extends Component {
             postUrl: 'no-url'
         };
 }
-    
     addWork(){
         const {CategoryName ,
                WorkName , 
@@ -134,6 +135,10 @@ class AddWorkComponent extends Component {
         
     }
 
+    handleChange(tags) {
+    this.setState({TagWork: tags})
+  }
+
     render() {
         const { previewVisible, previewImage, fileList } = this.state;
         const componentConfig = {
@@ -165,6 +170,7 @@ class AddWorkComponent extends Component {
               <DropzoneComponent config={componentConfig}
                        djsConfig={this.djsConfig} />
             </div>
+            <TagsInput value={this.state.TagWork} onChange={this.handleChange.bind(this)} />
             </Col>
         )
     }
