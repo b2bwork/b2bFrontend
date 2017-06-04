@@ -64,9 +64,18 @@ class AddWorkComponent extends Component {
             acceptedFiles: "image/jpeg,image/png,image/gif",
             autoProcessQueue: false,
             params: {
-                myParam: 'Hello from a parameter!',
-                anotherParam: 43
-            }
+                CategoryName: this.state.CategoryName ,
+                WorkName: this.state.WorkName , 
+                CoverImage: this.state.CoverImage , 
+                WorkerName: this.state.WorkerName , 
+                WorkerId: this.state.WorkerId , 
+                ScopeWork: this.state.ScopeWork , 
+                Workdays : this.state.Workdays , 
+                DetailWork: this.state.DetailWork , 
+                ExperienceWorker: this.state.ExperienceWorker , 
+                Price: this.state.Price , 
+                TagWork : this.state.TagWork ,
+                    }
         };
 
         this.componentConfig = {
