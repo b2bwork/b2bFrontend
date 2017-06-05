@@ -17,7 +17,7 @@ class LogedComponent extends Component{
 
   Logout(){
       localStorage.removeItem('UserID');
-      this.props.history.push('/');
+      this.props.history.push('/logout');
   }
 
    render(){
