@@ -19,7 +19,6 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 const networkInterface = createNetworkInterface({  uri: 'http://localhost:3001/graphql' });
 const client = new ApolloClient({  networkInterface});
-
 ReactDOM.render(
     <ApolloProvider client={client}>
        <LocaleProvider locale={enUS}>
@@ -33,6 +32,7 @@ ReactDOM.render(
           <Route exact={true} path="/addWork" component={addWork}/>
           <Route exact={true} path="/loged/:UserId" component={IndexPageComponent}/>
           <Route exact={true} path="/registered" component={registeredComponent}/>
+          <Route exact={true} path="/logout" render={() => (<Redirect to="/"/>)}/>
           </Switch>
         </Router>
        </LocaleProvider>
