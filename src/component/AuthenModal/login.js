@@ -30,7 +30,8 @@ class LoginComponent extends Component {
 
   login(){
     const {Username , Password} = this.state;
-    this.props.mutate({
+    if(Username.length > 0 && Password.length > 0){
+       this.props.mutate({
       variables: {Username, Password}})
     .then((login) => {
             localStorage.setItem('UserID',login.data.login._id);
@@ -38,6 +39,9 @@ class LoginComponent extends Component {
     }).catch((error) => {
         this.setState({WrongAuthen: 'ไม่มีชื่อผู้ใช้งานนี้'});
       });
+    }else{
+      this.setState({WrongAuthen: 'โปรดใส่ข้อมูลให้ครบ'});
+    }
   }
 
     render(){
