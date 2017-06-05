@@ -34,20 +34,25 @@ class LoginComponent extends Component {
       variables: {Username, Password}})
     .then((login) => {
             localStorage.setItem('UserID',login.data.login._id);
-           this.props.history.push('/loged');
+           this.props.history.push('/');
     }).catch((error) => {
         this.setState({WrongAuthen: 'ไม่มีชื่อผู้ใช้งานนี้'});
       });
   }
 
     render(){
+      const { getFieldDecorator } = this.props.form;
         return(
           <div className="FormSize">
             <FormItem>
-              <Input placeholder="Username" onChange={(e) => this.setState({Username: e.target.value})} />
+              {getFieldDecorator('userName', {
+                  rules: [{ required: true, message: 'โปรดป้อนชื่อผู้ใช้งาน' }],
+                 })(<Input placeholder="Username" onChange={(e) => this.setState({Username: e.target.value})} />)}
             </FormItem>
             <FormItem>
-              <Input placeholder="Password" onChange={(e) => this.setState({Password: e.target.value})}/>
+              {getFieldDecorator('Password', {
+                  rules: [{ required: true, message: 'โปรดป้อนรหัสผ่าน' }],
+                 })(<Input placeholder="Password" type="password" onChange={(e) => this.setState({Password: e.target.value})}/>)}
             </FormItem>
             <FormItem>
               <Button className="spaceButton" type="primary" onClick={this.login.bind(this)}> 
@@ -73,5 +78,5 @@ class LoginComponent extends Component {
     }
 }
 
-const Login = graphql(loginMutation)(withRouter(LoginComponent));
+const Login = graphql(loginMutation)(withRouter( Form.create()(LoginComponent)));
 export default Login;
