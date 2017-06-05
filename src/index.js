@@ -32,6 +32,7 @@ ReactDOM.render(
           <Route exact={true} path="/addWork" component={addWork}/>
           <Route exact={true} path="/loged/:UserId" component={IndexPageComponent}/>
           <Route exact={true} path="/registered" component={registeredComponent}/>
+          <Route exact={true} path="/NormalLoged" render={() => (<Redirect to="/"/>)}/>
           <Route exact={true} path="/logout" render={() => (<Redirect to="/"/>)}/>
           </Switch>
         </Router>
