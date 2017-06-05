@@ -61,31 +61,17 @@ class AddWorkComponent extends Component {
         nullInput: '',
     }
 
-    this.djsConfig = {
-            addRemoveLinks: true,
-            acceptedFiles: "image/jpeg,image/png,image/gif",
-            autoProcessQueue: false,
-            params: {
-                CategoryName: this.state.CategoryName ,
-                WorkName: this.state.WorkName , 
-                CoverImage: this.state.CoverImage , 
-                WorkerName: this.state.WorkerName , 
-                WorkerId: this.state.WorkerId , 
-                ScopeWork: this.state.ScopeWork , 
-                Workdays : this.state.Workdays , 
-                DetailWork: this.state.DetailWork , 
-                ExperienceWorker: this.state.ExperienceWorker , 
-                Price: this.state.Price , 
-                TagWork : this.state.TagWork ,
-                    }
-        };
-
         this.componentConfig = {
             iconFiletypes: ['.jpg', '.png', '.gif'],
             showFiletypeIcon: true,
-            postUrl: 'no-url'
+            postUrl: '/uploadHandler'
         };
+
+        this.dropzone = null;
 }
+   handlePost() {
+        this.dropzone.processQueue();
+    }
     addWork(){
         const {CategoryName ,
                WorkName , 
@@ -134,8 +120,11 @@ class AddWorkComponent extends Component {
                }
         
     }
+    handleFileAdded(file) {
+        console.log(file);
+    }
 
-    handleChange(tags) {
+    changeTaging(tags) {
     this.setState({TagWork: tags})
   }
 
@@ -144,8 +133,35 @@ class AddWorkComponent extends Component {
         const componentConfig = {
                         iconFiletypes: ['.jpg', '.png', '.gif'],
                         showFiletypeIcon: true,
-                        postUrl: '/uploadHandler'
+                        postUrl: 'http://localhost:3001/upload/addwork'
                     };
+        const eventHandlers = {
+            init: dz => this.dropzone = dz,
+            addedfile: this.handleFileAdded.bind(this),
+            sendingmultiple: null,
+            successmultiple: null,
+            completemultiple: null,
+        }
+
+       const djsConfig = {
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/png,image/gif",
+            autoProcessQueue: false,
+            params: {
+                CategoryName: this.state.CategoryName ,
+                WorkName: this.state.WorkName , 
+                CoverImage: this.state.CoverImage , 
+                WorkerName: this.state.WorkerName , 
+                WorkerId: this.state.WorkerId , 
+                ScopeWork: this.state.ScopeWork , 
+                Workdays : this.state.Workdays , 
+                DetailWork: this.state.DetailWork , 
+                ExperienceWorker: this.state.ExperienceWorker , 
+                Price: this.state.Price , 
+                TagWork : this.state.TagWork ,
+                    }
+        };
+
         return (
             <Col md={10} offset={3}>
              <div>
@@ -167,10 +183,11 @@ class AddWorkComponent extends Component {
                     placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
              </div>
              <div className="clearfix">
-              <DropzoneComponent config={componentConfig}
-                       djsConfig={this.djsConfig} />
+              <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
+                       djsConfig={djsConfig} />
             </div>
-            <TagsInput value={this.state.TagWork} onChange={this.handleChange.bind(this)} />
+            <TagsInput value={this.state.TagWork} onChange={this.changeTaging.bind(this)} />
+            <Button type="primary" onClick={this.handlePost.bind(this)}>เพิ่มงาน</Button>
             </Col>
         )
     }
