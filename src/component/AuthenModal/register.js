@@ -21,7 +21,6 @@ class RegisterComponent extends Component {
   
   constructor(props){
      super(props)
-     console.log(props)
      this.state = {
        Username: '',
        Password: '',
@@ -35,7 +34,7 @@ class RegisterComponent extends Component {
 
   RegisterUser(){
     const {Username , Password , Email , Name , BirthDate} = this.state;
-    if(Username != null && Password != null && Email != null &&  Name != null &&  BirthDate != null){
+    if(Username.length > 0 && Password.length > 0 && Email.length > 0 &&  Name.length > 0 &&  BirthDate.length > 0){
        this.props.mutate({
           variables: {Username: Username, Password: Password, Email: Email, Name: Name, BirthDate: BirthDate}}).then((e) => {
              if(e.data.register._id === `registered`){
