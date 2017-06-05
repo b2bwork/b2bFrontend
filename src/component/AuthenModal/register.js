@@ -21,6 +21,7 @@ class RegisterComponent extends Component {
   
   constructor(props){
      super(props)
+     console.log(props)
      this.state = {
        Username: '',
        Password: '',
@@ -54,6 +55,7 @@ class RegisterComponent extends Component {
 
 
     render(){
+      const { getFieldDecorator } = this.props.form;
         return(
           <div>
            <NavbarComponent/>
@@ -61,16 +63,25 @@ class RegisterComponent extends Component {
             <Row>
               <Col span={8} offset={8}>
               <FormItem>
-               <Input placeholder="  ชื่อผู้ใช้งาน   " onChange={(e) => this.setState({Username: e.target.value})} />
+                {getFieldDecorator('userName', {
+                  rules: [{ required: true, message: 'โปรดป้อนชื่อผู้ใช้งาน' }],
+                 })(<Input placeholder="  ชื่อผู้ใช้งาน   " onChange={(e) => this.setState({Username: e.target.value})} />)
+                 }
               </FormItem>
               <FormItem>
-               <Input placeholder="  รหัสผ่าน   " onChange={(e) => this.setState({Password: e.target.value})}/>
+                 {getFieldDecorator('Password', {
+                  rules: [{ required: true, message: 'โปรดป้อนรหัสผ่าน' }],
+                 })(<Input placeholder="  รหัสผ่าน   " onChange={(e) => this.setState({Password: e.target.value})}/>)}
               </FormItem>
               <FormItem>
-               <Input placeholder="  Email   " onChange={(e) => this.setState({Email: e.target.value})} />
+                {getFieldDecorator('Email', {
+                  rules: [{ required: true, message: 'โปรดป้อนอีเมล์' }],
+                 })(<Input placeholder="  อีเมล์   " onChange={(e) => this.setState({Email: e.target.value})} />)}
               </FormItem>
               <FormItem>
-               <Input placeholder="  ชื่อจริง   " onChange={(e) => this.setState({Name: e.target.value})}/>
+                {getFieldDecorator('Name', {
+                  rules: [{ required: true, message: 'โปรดป้อนชื่อจริง' }],
+                 })(<Input placeholder="  ชื่อจริง   " onChange={(e) => this.setState({Name: e.target.value})}/>)}
               </FormItem>
               <FormItem>
                <DatePicker placeholder=" วันเกิด   " onChange={(data,dateString) => this.setState({BirthDate: dateString})}/>
@@ -87,6 +98,5 @@ class RegisterComponent extends Component {
         )
     }
 }
-
-const Register = graphql(RegisterMutation)(withRouter(RegisterComponent))
+const Register = graphql(RegisterMutation)(withRouter(Form.create()(RegisterComponent)))
 export default Register
