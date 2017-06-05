@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom';
 import { Button , Input , Col , Row , Icon , Modal } from 'antd';
 import DropzoneComponent from 'react-dropzone-component';
 import TagsInput from 'react-tagsinput';
+import NavbarComponent from '../Navbar/index';
 
 import '../../../node_modules/antd/dist/antd.min.css';
 import './index.css';
@@ -148,7 +149,10 @@ class AddWorkComponent extends Component {
         };
 
         return (
-            <Col md={10} offset={3}>
+            <div>
+                <NavbarComponent/>
+                <br/><br/>
+                <Col md={10} offset={3}>
              <div>
                  <i className="fa fa-money fa-3x" aria-hidden="true"></i>
                <Input prefix={<Icon type="flag" style={{ fontSize: 16 }} />} 
@@ -174,6 +178,7 @@ class AddWorkComponent extends Component {
             <TagsInput value={this.state.TagWork} onChange={this.changeTaging.bind(this)} />
             <Button type="primary" onClick={this.handlePost.bind(this)}>เพิ่มงาน</Button>
             </Col>
+            </div>
         )
     }
 }
