@@ -61,12 +61,6 @@ class AddWorkComponent extends Component {
         nullInput: '',
     }
 
-        this.componentConfig = {
-            iconFiletypes: ['.jpg', '.png', '.gif'],
-            showFiletypeIcon: true,
-            postUrl: '/uploadHandler'
-        };
-
         this.dropzone = null;
 }
    handlePost() {
@@ -111,6 +105,7 @@ class AddWorkComponent extends Component {
                                 TagWork }
                 }
                 ).then((data) =>{
+                    this.dropzone.processQueue();
                     this.setState({nullInput: 'เพิ่มงานเรียบร้อย'});
                    
                })
@@ -139,27 +134,17 @@ class AddWorkComponent extends Component {
             init: dz => this.dropzone = dz,
             addedfile: this.handleFileAdded.bind(this),
             sendingmultiple: null,
-            successmultiple: null,
-            completemultiple: null,
+            processingmultiple: null,
+            successmultiple: ()=> this.dropzone.processQueue(),
+            completemultiple: ()=> console.log('complete'),
         }
 
        const djsConfig = {
             addRemoveLinks: true,
             acceptedFiles: "image/jpeg,image/png,image/gif",
-            autoProcessQueue: false,
-            params: {
-                CategoryName: this.state.CategoryName ,
-                WorkName: this.state.WorkName , 
-                CoverImage: this.state.CoverImage , 
-                WorkerName: this.state.WorkerName , 
-                WorkerId: this.state.WorkerId , 
-                ScopeWork: this.state.ScopeWork , 
-                Workdays : this.state.Workdays , 
-                DetailWork: this.state.DetailWork , 
-                ExperienceWorker: this.state.ExperienceWorker , 
-                Price: this.state.Price , 
-                TagWork : this.state.TagWork ,
-                    }
+            uploadMultiple: true,
+            autoProcessQueue: false
+            
         };
 
         return (
@@ -184,7 +169,7 @@ class AddWorkComponent extends Component {
              </div>
              <div className="clearfix">
               <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
-                       djsConfig={djsConfig} />
+                       djsConfig={djsConfig} multiple/>
             </div>
             <TagsInput value={this.state.TagWork} onChange={this.changeTaging.bind(this)} />
             <Button type="primary" onClick={this.handlePost.bind(this)}>เพิ่มงาน</Button>
