@@ -34,7 +34,7 @@ class LoginComponent extends Component {
       variables: {Username, Password}})
     .then((login) => {
             localStorage.setItem('UserID',login.data.login._id);
-           this.props.history.push('/');
+           this.props.history.push('/NormalLoged');
     }).catch((error) => {
         this.setState({WrongAuthen: 'ไม่มีชื่อผู้ใช้งานนี้'});
       });
