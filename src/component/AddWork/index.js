@@ -15,9 +15,7 @@ import '../../../node_modules/react-tagsinput/react-tagsinput.css';
 
 const addWorkMutation = gql`
        mutation addwork($CategoryName: String , 
-                        $WorkName: String , 
-                        $CoverImage: String , 
-                        $WorkerName: String , 
+                        $WorkName: String ,   
                         $WorkerId: String , 
                         $ScopeWork: String , 
                         $Workdays : Int , 
@@ -25,13 +23,10 @@ const addWorkMutation = gql`
                         $ExperienceWorker: String , 
                         $Price: Int , 
                         $TagWork : [String]){
-
-           InsertWork(CategoryName: $CategoryName ,
+           InsertWork(CategoryName: $CategoryName , 
                       WorkName: $WorkName , 
-                      CoverImage: $CoverImage , 
-                      WorkerName: $WorkerName , 
                       WorkerId: $WorkerId , 
-                      ScopeWork: $ScopeWork , 
+                      ScopeWork: $ScopeWork ,
                       Workdays : $Workdays , 
                       DetailWork: $DetailWork , 
                       ExperienceWorker: $ExperienceWorker , 
@@ -48,11 +43,9 @@ class AddWorkComponent extends Component {
         super(props)
 
     this.state = {
-        CategoryName: '' ,
-        WorkName: '' , 
-        CoverImage: '' , 
-        WorkerName: '' , 
-        WorkerId: '' , 
+        CategoryName: '' , 
+        WorkName: '',
+        WorkerId: localStorage.getItem('UserID')  , 
         ScopeWork: '' , 
         Workdays : '' , 
         DetailWork: '' , 
@@ -69,9 +62,7 @@ class AddWorkComponent extends Component {
     }
     addWork(){
         const {CategoryName ,
-               WorkName , 
-               CoverImage , 
-               WorkerName , 
+               WorkName ,  
                WorkerId , 
                ScopeWork , 
                Workdays  , 
@@ -80,24 +71,21 @@ class AddWorkComponent extends Component {
                Price , 
                TagWork } = this.state;
 
-        if(CategoryName != null && 
-           WorkName != null &&
-           CoverImage != null && 
-           WorkerName != null && 
-           WorkerId != null && 
-           ScopeWork != null && 
-           Workdays  != null &&
-           DetailWork != null && 
-           ExperienceWorker != null && 
-           Price != null && 
+        if(CategoryName.length > 0 && 
+           WorkName.length > 0 &&
+           WorkerId.length > 0 && 
+           ScopeWork.length > 0 && 
+           Workdays.length > 0 &&
+           DetailWork.length > 0 && 
+           ExperienceWorker.length > 0 && 
+           Price.length > 0 && 
            TagWork.length >= 0){
+               console.log('sss');
 
                this.props.mutate({
                     variables: {CategoryName, 
                                 WorkName, 
-                                CoverImage, 
-                                WorkerName, 
-                                WorkerId ,
+                                WorkerId,
                                 ScopeWork ,
                                 Workdays ,
                                 DetailWork ,
@@ -116,9 +104,6 @@ class AddWorkComponent extends Component {
                }
         
     }
-    handleFileAdded(file) {
-        console.log(file);
-    }
 
     changeTaging(tags) {
     this.setState({TagWork: tags})
@@ -133,7 +118,7 @@ class AddWorkComponent extends Component {
                     };
         const eventHandlers = {
             init: dz => this.dropzone = dz,
-            addedfile: this.handleFileAdded.bind(this),
+            addedfile: null,
             sendingmultiple: null,
             processingmultiple: null,
             successmultiple: ()=> this.dropzone.processQueue(),
@@ -153,30 +138,36 @@ class AddWorkComponent extends Component {
                 <NavbarComponent/>
                 <br/><br/>
                 <Col md={10} offset={3}>
-             <div>
-                 <i className="fa fa-money fa-3x" aria-hidden="true"></i>
-               <Input prefix={<Icon type="flag" style={{ fontSize: 16 }} />} 
-                      placeholder="ขอบเขตงาน" type="textarea" onChange={(e) => this.setState({ScopeWork: e.target.value})} />
+                <div>
+               <Input placeholder="หมวดหมู่งาน" type="text" onChange={(e) => this.setState({CategoryName: e.target.value})} />
                <br/>    
              </div>
              <div>
-             <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
-                    placeholder="รายละเอียดงาน" type="textarea" onChange={(e) => this.setState({DetailWork: e.target.value})} />
+               <Input placeholder="ชื่องาน" type="text" onChange={(e) => this.setState({WorkName: e.target.value})} />
+               <br/>    
              </div>
              <div>
-             <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
-                    placeholder="จำนวนวัน" onChange={(e) => this.setState({Workdays: e.target.value})} />
+               <Input placeholder="ขอบเขตงาน" type="textarea" onChange={(e) => this.setState({ScopeWork: e.target.value})} />
+               <br/>    
              </div>
              <div>
-             <Input prefix={<Icon type="paper-clip" style={{ fontSize: 16 }} />} 
-                    placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
+             <Input placeholder="รายละเอียดงาน" type="textarea" onChange={(e) => this.setState({DetailWork: e.target.value})} />
+             </div>
+             <div>
+             <Input placeholder="ประสบการณ์การทำงาน" type="textarea" onChange={(e) => this.setState({ExperienceWorker: e.target.value})} />
+             </div>
+             <div>
+             <Input placeholder="จำนวนวัน" onChange={(e) => this.setState({Workdays: e.target.value})} />
+             </div>
+             <div>
+             <Input placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
              </div>
              <div className="clearfix">
               <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
                        djsConfig={djsConfig} multiple/>
             </div>
             <TagsInput value={this.state.TagWork} onChange={this.changeTaging.bind(this)} />
-            <Button type="primary" onClick={this.handlePost.bind(this)}>เพิ่มงาน</Button>
+            <Button type="primary" onClick={this.addWork.bind(this)}>เพิ่มงาน</Button>
             </Col>
             </div>
         )
