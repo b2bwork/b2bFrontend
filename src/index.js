@@ -13,6 +13,7 @@ import DetailWork from './component/DetailWork/index';
 import Register from './component/AuthenModal/register';
 import registeredComponent from './component/AuthenModal/registerd';
 import addWork from './component/AddWork/index';
+import userProfileComponent from './component/userProfile/index';
 
 
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
@@ -32,6 +33,7 @@ ReactDOM.render(
           <Route exact={true} path="/addWork" component={addWork}/>
           <Route exact={true} path="/loged/:UserId" component={IndexPageComponent}/>
           <Route exact={true} path="/registered" component={registeredComponent}/>
+          <Route exact={true} path="/myProfile" component={userProfileComponent}/>
           <Route exact={true} path="/NormalLoged" render={() => (<Redirect to="/"/>)}/>
           <Route exact={true} path="/logout" render={() => (<Redirect to="/"/>)}/>
           </Switch>
