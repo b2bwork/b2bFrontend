@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {withRouter} from 'react-router-dom';
 
-import { Button , Input , Col , Row , Icon , Modal } from 'antd';
+import { Button , Input , Col , Row , Icon , Modal , InputNumber} from 'antd';
 import DropzoneComponent from 'react-dropzone-component';
 import TagsInput from 'react-tagsinput';
 import NavbarComponent from '../Navbar/index';
@@ -52,14 +52,22 @@ class AddWorkComponent extends Component {
         ExperienceWorker: '' , 
         Price: '' , 
         TagWork : [] ,
+        WorkId: '',
         nullInput: '',
     }
+    this.djsConfig = {
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/png,image/gif",
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            params: {
+                _id: this.state.WorkId
+            }
+            
+        };
 
         this.dropzone = null;
 }
-   handlePost() {
-        this.dropzone.processQueue();
-    }
     addWork(){
         const {CategoryName ,
                WorkName ,  
@@ -75,13 +83,11 @@ class AddWorkComponent extends Component {
            WorkName.length > 0 &&
            WorkerId.length > 0 && 
            ScopeWork.length > 0 && 
-           Workdays.length > 0 &&
+           Workdays.toString().length > 0 &&
            DetailWork.length > 0 && 
            ExperienceWorker.length > 0 && 
-           Price.length > 0 && 
+           Price.toString().length > 0 && 
            TagWork.length >= 0){
-               console.log('sss');
-
                this.props.mutate({
                     variables: {CategoryName, 
                                 WorkName, 
@@ -94,8 +100,9 @@ class AddWorkComponent extends Component {
                                 TagWork }
                 }
                 ).then((data) =>{
+                    console(data.data.InsertWork._id);
+                    this.setState({WorkId:data.data.InsertWork._id });
                     this.dropzone.processQueue();
-                    this.setState({nullInput: 'เพิ่มงานเรียบร้อย'});
                    
                })
 
@@ -125,13 +132,6 @@ class AddWorkComponent extends Component {
             completemultiple: ()=> console.log('complete'),
         }
 
-       const djsConfig = {
-            addRemoveLinks: true,
-            acceptedFiles: "image/jpeg,image/png,image/gif",
-            uploadMultiple: true,
-            autoProcessQueue: false
-            
-        };
 
         return (
             <div>
@@ -139,6 +139,7 @@ class AddWorkComponent extends Component {
                 <br/><br/>
                 <Col md={10} offset={3}>
                 <div>
+                    {this.state.WorkId}
                <Input placeholder="หมวดหมู่งาน" type="text" onChange={(e) => this.setState({CategoryName: e.target.value})} />
                <br/>    
              </div>
@@ -157,14 +158,13 @@ class AddWorkComponent extends Component {
              <Input placeholder="ประสบการณ์การทำงาน" type="textarea" onChange={(e) => this.setState({ExperienceWorker: e.target.value})} />
              </div>
              <div>
-             <Input placeholder="จำนวนวัน" onChange={(e) => this.setState({Workdays: e.target.value})} />
-             </div>
-             <div>
-             <Input placeholder="ราคา" onChange={(e) => this.setState({Price: e.target.value})} />
+             จำนวนวัน <InputNumber min={1}  defaultValue={1} placeholder="จำนวนวัน" onChange={(e) => {this.setState({Workdays: e})}} />
+             ราคา <InputNumber min={1500}  defaultValue={1500} placeholder="ราคา" onChange={(e) => {this.setState({Price: e})}} />
+
              </div>
              <div className="clearfix">
               <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
-                       djsConfig={djsConfig} multiple/>
+                       djsConfig={this.djsConfig} multiple/>
             </div>
             <TagsInput value={this.state.TagWork} onChange={this.changeTaging.bind(this)} />
             <Button type="primary" onClick={this.addWork.bind(this)}>เพิ่มงาน</Button>
