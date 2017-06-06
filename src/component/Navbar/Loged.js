@@ -37,6 +37,9 @@ class LogedComponent extends Component{
             <MenuItem key="setting:2">เขียนโปรแกรมมั๊ย</MenuItem>
           </MenuItemGroup>
         </SubMenu>
+        <MenuItem key="profile" >
+          <Link to="/myProfile"><span><Icon type="user" />โปรไฟล์ของคุณ</span></Link>
+        </MenuItem>
         <MenuItem key="logout" >
           <span onClick={this.Logout.bind(this)}><Icon type="logout" />ออกจากระบบ</span>
         </MenuItem>
