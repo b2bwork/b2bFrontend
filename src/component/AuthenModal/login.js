@@ -62,13 +62,13 @@ class LoginComponent extends Component {
               <Button className="spaceButton" type="primary" onClick={this.login.bind(this)}> 
                 <Icon type="key"/> เข้าสู่ระบบ</Button>
               <Link to="/Register"><Button className="spaceButton"><Icon type="unlock" />สมัครสมาชิก</Button></Link>
-              <a href="http://localhost:3001/auth/google" className="spaceButton">
+              <a href="http://128.199.68.65:3001/auth/google" className="spaceButton">
                 <Button size="large" className="googleButton"> 
                   <i className="fa fa-google-plus-official fa-2x" aria-hidden="true">
                   </i> Google
                 </Button>
               </a>
-              <a href="http://localhost:3001/auth/facebook" className="spaceButton">
+              <a href="http://128.199.68.65:3001/auth/facebook" className="spaceButton">
                 <Button size="large" className="googleButton"> 
                   <i className="fa fa-facebook-official fa-2x" aria-hidden="true">
                   </i> Facebook

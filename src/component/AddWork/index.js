@@ -102,6 +102,16 @@ class AddWorkComponent extends Component {
                 ).then((data) =>{
                     console(data.data.InsertWork._id);
                     this.setState({WorkId:data.data.InsertWork._id });
+                    this.djsConfig = {
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/png,image/gif",
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            params: {
+                _id: this.state.WorkId
+            }
+            
+        };
                     this.dropzone.processQueue();
                    
                })
@@ -121,7 +131,7 @@ class AddWorkComponent extends Component {
         const componentConfig = {
                         iconFiletypes: ['.jpg', '.png', '.gif'],
                         showFiletypeIcon: true,
-                        postUrl: 'http://localhost:3001/upload/addwork'
+                        postUrl: 'http://128.199.68.65:3001/upload/addwork'
                     };
         const eventHandlers = {
             init: dz => this.dropzone = dz,
