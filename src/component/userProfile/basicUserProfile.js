@@ -33,10 +33,10 @@ class BasicUserProfileComponent extends Component {
 
         }
     }
-
     componentDidUpdate(prevProps, prevState){
         console.log(prevProps)
     }
+    
     editProfile(){
         const {FirstName , 
                LastName , 
