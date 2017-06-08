@@ -18,7 +18,7 @@ import userProfileComponent from './component/userProfile/index';
 
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
-const networkInterface = createNetworkInterface({  uri: 'http://localhost:3001/graphql' });
+const networkInterface = createNetworkInterface({  uri: 'http://128.199.68.65:3001/graphql' });
 const client = new ApolloClient({  networkInterface});
 ReactDOM.render(
     <ApolloProvider client={client}>
