@@ -19,7 +19,6 @@ const ProfileQuery = gql`
             ProfileImage 
             BirthDate 
             Telephone
-            Education
             Skill
             Age
             ImageIdCard
