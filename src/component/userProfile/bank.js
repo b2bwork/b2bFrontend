@@ -75,4 +75,4 @@ class BankUserProfileComponent extends Component {
 }
 
 const editUserBank = graphql(bankUserProfileMutation)(withRouter(BankUserProfileComponent));
-export default BankUserProfileComponent;
+export default editUserBank;
