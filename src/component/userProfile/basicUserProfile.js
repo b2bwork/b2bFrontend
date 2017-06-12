@@ -75,12 +75,6 @@ class BasicUserProfileComponent extends Component {
                                onChange={(e)=> this.setState({Email: e.target.value})} 
                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
                    </p>
-                 </FormItem>
-               </Collapse.Panel>
-               </Collapse>
-               <Collapse bordered={false} defaultActiveKey={['2']} >
-               <Collapse.Panel header={"เบอร์โทรศัพท์"+ "  " + this.state.Telephone} key="2">
-                  <FormItem >
                    <p>เบอร์โทรศัพท์ <input 
                                    type="text" 
                                    value={this.state.Telephone} 
