@@ -48,7 +48,7 @@ class BankUserProfileComponent extends Component {
     }
 
     selectbank(bank){
-        this.setState(bank : bank);
+        this.setState({bank: bank});
     }
     render() {
         return (
