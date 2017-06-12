@@ -15,8 +15,8 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 const bankUserProfileMutation = gql`
-     mutation addBank($UserID: String! , $Bank: String , $BranchBank: String! , $BankNumber: String! ){
-         AddBank(_id: $UserID , Bank: $Bank , BranchBank: $BranchBank , BankNumber: $BankNumber ){
+     mutation addBank($_id: String! , $Bank: String , $BranchBank: String! , $BankNumber: String! ){
+         AddBank(_id: $_id , Bank: $Bank , BranchBank: $BranchBank , BankNumber: $BankNumber ){
              _id
          }
 
@@ -34,12 +34,11 @@ class BankUserProfileComponent extends Component {
     }
 
     uploadUserBank(){
-        const {UserID,
-               Bank,
+        const {Bank,
                BranchBank,
                BankNumber} = this.state;
         this.props.mutate({
-            UserID: localStorage.getItem('UserID'),
+            _id: localStorage.getItem('UserID'),
             Bank: Bank,
             BranchBank: BranchBank,
             BankNumber: BankNumber
