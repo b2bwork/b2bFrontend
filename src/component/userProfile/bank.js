@@ -14,11 +14,14 @@ import './index.css';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-/*const bankUserProfileMutation = gql`
-     mutation addBank($UserID: String! , $Bank: String , $BranchBank: String ){
+const bankUserProfileMutation = gql`
+     mutation addBank($UserID: String! , $Bank: String , $BranchBank: String! , $BankNumber: String! ){
+         AddBank(_id: String! , Bank: String! , BranchBank: String! , BankNumber: String! ){
+             _id
+         }
 
      }
- `;*/
+ `;
 class BankUserProfileComponent extends Component {
     constructor(props){
      super(props);
@@ -57,15 +60,13 @@ class BankUserProfileComponent extends Component {
                         type="text" 
                         value={this.state.bankNumber} 
                         onChange={(e)=> this.setState({branchBank: e.target.value})}/>
-                  </FormItem>
-                  <FormItem>
-                       <input 
+                        
+                        <input 
                         placeholder="หมายเลขบัญชี"  
                         type="text" 
                         value={this.state.bankNumber} 
                         onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
                   </FormItem>
-
                </Col>
              </Row>
             </div>
