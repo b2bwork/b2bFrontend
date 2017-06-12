@@ -52,7 +52,11 @@ class BankUserProfileComponent extends Component {
                 
                   </Select>
                   <FormItem>
-                       <input placeholder="หมายเลขบัญชี"  type="text" value={this.state.bankNumber} onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
+                       <input 
+                        placeholder="หมายเลขบัญชี"  
+                        type="text" 
+                        value={this.state.bankNumber} 
+                        onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
                   </FormItem>
                   {this.state.bankNumber}
                </Col>
