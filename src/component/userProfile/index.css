@@ -15,3 +15,7 @@ input{
 .red{
     color: red;
 }
+
+.select{
+    width: 50%;
+}

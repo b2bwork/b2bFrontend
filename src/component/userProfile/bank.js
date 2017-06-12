@@ -40,7 +40,7 @@ class BankUserProfileComponent extends Component {
                <br/><br/>
                <Col md={19} offset={3}>
                  <Select
-                   style={{ width: 50% }}
+                   className="select"
                    placeholder="เลือกธนาคาร"
                    onChange={(bank)=> { this.setState(bank: bank) }}
                   >
