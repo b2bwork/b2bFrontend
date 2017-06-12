@@ -18,12 +18,12 @@ export default class MenuUserProfileComponent extends Component {
                   defaultOpenKeys={['sub1']}
                   > 
                    <SubMenu key="sub1" title={<span><Icon type="user" /><span>ข้อมูลเบื้องต้น</span></span>}>
-                   <Menu.Item key="1">ข้อมูลส่วนตัว</Menu.Item>
+                   <Menu.Item key="1"><Link to='/myProfile'>ข้อมูลส่วนตัว</Link></Menu.Item>
                   </SubMenu>
                   <SubMenu key="sub2" title={<span><Icon type="home" /><span>ข้อมูลฟรีแลนซ์</span></span>}>
                     <Menu.Item key="2">ความสามารถ</Menu.Item>
                     <Menu.Item key="3">บัตรประชาชน</Menu.Item>
-                    <Menu.Item key="4">บัญชีธนาคาร</Menu.Item>
+                    <Menu.Item key="4"><Link to='/myProfile/Bank'>บัญชีธนาคาร</Link></Menu.Item>
                   </SubMenu>
                   <SubMenu key="sub3" title={<span><Icon type="team" /><span>บริษัท</span></span>}>
                   </SubMenu>
