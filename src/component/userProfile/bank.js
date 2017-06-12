@@ -47,6 +47,10 @@ class BankUserProfileComponent extends Component {
             console.log(data)
         })
     }
+
+    selectbank(bank){
+        this.setState(bank : bank);
+    }
     render() {
         return (
             <div>
@@ -60,7 +64,7 @@ class BankUserProfileComponent extends Component {
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
-                   onChange={(bank)=> { this.setState(bank: bank) }}
+                   onChange={(bank)=> { this.selectbank.bind(this) }}
                   >
                     <Option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</Option>
                     <Option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</Option>
@@ -73,7 +77,7 @@ class BankUserProfileComponent extends Component {
                        <input 
                         placeholder="สาขา"  
                         type="text" 
-                        value={this.state.bankNumber} 
+                        value={this.state.branchBank} 
                         onChange={(e)=> this.setState({branchBank: e.target.value})}/>
 
                         <input 
