@@ -56,28 +56,44 @@ class BasicUserProfileComponent extends Component {
              <Row>
               <Col md={20} offset={2}>
               <br/><br/>
-              <Collapse>
-               <Collapse.Panel header={"ชื่อ-นามสกุล"+ "  "+ this.state.FirstName+ "  " + this.state.LastName} key="1">
                  <FormItem>
-                   <p>ชื่อ <input type="text" value={this.state.FirstName} onChange={(e)=> this.setState({FirstName: e.target.value})} /></p>
-                   <p>นามสกุล <input type="text" value={this.state.LastName} onChange={(e)=> this.setState({LastName: e.target.value})}/></p>
-                   <p>อีเมล <input type="text" value={this.state.Email} onChange={(e)=> this.setState({Email: e.target.value})} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/></p>
-                   <Button type="primary" onClick={this.editProfile.bind(this)} >แก้ไข</Button>
+                   <p>ชื่อ <input 
+                           type="text" 
+                           value={this.state.FirstName} 
+                           onChange={(e)=> this.setState({FirstName: e.target.value})} 
+                           />
+                   </p>
+                   <p>นามสกุล <input 
+                               type="text" 
+                               value={this.state.LastName} 
+                               onChange={(e)=> this.setState({LastName: e.target.value})}
+                               />
+                   </p>
+                   <p>อีเมล <input 
+                             type="text" 
+                             value={this.state.Email} 
+                             onChange={(e)=> this.setState({Email: e.target.value})} 
+                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            />
+                   </p>
+                   <p>เบอร์โทรศัพท์ <input 
+                                   type="text" 
+                                   value={this.state.Telephone} 
+                                   onChange={(e)=> this.setState({Telephone: e.target.value})} 
+                                   pattern="[0][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/> 
+                   </p>
+                   <p>วันเกิด <DatePicker 
+                             placeholder=" วันเกิด   " 
+                             onChange={(data,dateString) => this.setState({BirthDate: dateString})}
+                             />
+                   </p>
+                   <Button 
+                     type="primary" 
+                     onClick={this.editProfile.bind(this)} 
+                     >
+                     แก้ไข
+                   </Button> 
                  </FormItem>
-               </Collapse.Panel>
-               <Collapse.Panel header={"เบอร์โทรศัพท์"+ "  " + this.state.Telephone} key="2">
-                  <FormItem >
-                   <p>เบอร์โทรศัพท์ <input type="text" value={this.state.Telephone} onChange={(e)=> this.setState({Telephone: e.target.value})} pattern="[0][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/> </p>
-                   <Button type="primary" onClick={this.editProfile.bind(this)} >แก้ไข</Button>
-                 </FormItem>
-               </Collapse.Panel>
-               <Collapse.Panel header={"วันเกิด" + "  "+this.state.BirthDate} key="3">
-                 <FormItem >
-                   <p>วันเกิด <DatePicker placeholder=" วันเกิด   " onChange={(data,dateString) => this.setState({BirthDate: dateString})}/></p>
-                   <Button type="primary" onClick={this.editProfile.bind(this)} >แก้ไข</Button> 
-                 </FormItem>
-               </Collapse.Panel>
-              </Collapse>
               {this.state.added}
               <br/><br/>
               </Col>
