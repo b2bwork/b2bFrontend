@@ -38,22 +38,24 @@ class BankUserProfileComponent extends Component {
                 <MenuUserProfileComponent/>               
                </Col>
                <br/><br/>
-              <Select
-               style={{ width: 200 }}
-               placeholder="เลือกธนาคาร"
-               onChange={(bank)=> { this.setState(bank: bank) }}
-              >
-                <Option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</Option>
-                <Option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</Option>
-                <Option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</Option>
-                <Option value="ธนาคารทหารไทย">ธนาคารทหารไทย</Option>
-                <Option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</Option>
+               <Col md={20} offset={2}>
+                 <Select
+                   style={{ width: 200 }}
+                   placeholder="เลือกธนาคาร"
+                   onChange={(bank)=> { this.setState(bank: bank) }}
+                  >
+                    <Option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</Option>
+                    <Option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</Option>
+                    <Option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</Option>
+                    <Option value="ธนาคารทหารไทย">ธนาคารทหารไทย</Option>
+                    <Option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</Option>
                 
-              </Select>
-              <FormItem>
-                   <input placeholder="หมายเลขบัญชี"  type="text" value={this.state.bankNumber} onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
-              </FormItem>
-              {this.state.bankNumber}
+                  </Select>
+                  <FormItem>
+                       <input placeholder="หมายเลขบัญชี"  type="text" value={this.state.bankNumber} onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
+                  </FormItem>
+                  {this.state.bankNumber}
+               </Col>
              </Row>
             </div>
         );
