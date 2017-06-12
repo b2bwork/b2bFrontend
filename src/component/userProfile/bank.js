@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {withRouter} from 'react-router-dom';
-import { Form , Col , Row , Input , Button , Select } from 'antd';
+import { Form , Col , Row , Button , Select } from 'antd';
 
 
 import NavbarComponent from '../Navbar/index';
@@ -31,6 +31,21 @@ class BankUserProfileComponent extends Component {
         bankImage : props.bankImage,
         bankNumber: props.bankNumber
      }
+    }
+
+    uploadUserBank(){
+        const {UserID,
+               Bank,
+               BranchBank,
+               BankNumber} = this.state;
+        this.props.mutate({
+            UserID: localStorage.getItem('UserID'),
+            Bank: Bank,
+            BranchBank: BranchBank,
+            BankNumber: BankNumber
+        }).then((data)=>{
+            console.log(data)
+        })
     }
     render() {
         return (
@@ -66,6 +81,7 @@ class BankUserProfileComponent extends Component {
                         type="text" 
                         value={this.state.bankNumber} 
                         onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
+                        <Button type="primary" onClick={this.uploadUserBank.bind(this)}></Button>
                   </FormItem>
                </Col>
              </Row>
