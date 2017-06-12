@@ -79,7 +79,7 @@ class BankUserProfileComponent extends Component {
                         type="text" 
                         value={this.state.branchBank} 
                         onChange={(e)=> this.setState({branchBank: e.target.value})}/>
-
+                        <br/>
                         <input 
                         placeholder="หมายเลขบัญชี"  
                         type="text" 
