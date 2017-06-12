@@ -14,6 +14,7 @@ import Register from './component/AuthenModal/register';
 import registeredComponent from './component/AuthenModal/registerd';
 import addWork from './component/AddWork/index';
 import userProfileComponent from './component/userProfile/index';
+import BankUserProfileComponent from './component/userProfile/bank';
 
 
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
@@ -34,6 +35,7 @@ ReactDOM.render(
           <Route exact={true} path="/loged/:UserId" component={IndexPageComponent}/>
           <Route exact={true} path="/registered" component={registeredComponent}/>
           <Route exact={true} path="/myProfile" component={userProfileComponent}/>
+          <Route exact={true} path="/myProfile/Bank" component={BankUserProfileComponent}/>
           <Route exact={true} path="/NormalLoged" render={() => (<Redirect to="/"/>)}/>
           <Route exact={true} path="/logout" render={() => (<Redirect to="/"/>)}/>
           </Switch>
