@@ -85,7 +85,8 @@ class BankUserProfileComponent extends Component {
                         type="text" 
                         value={this.state.bankNumber} 
                         onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
-                        <Button type="primary" onClick={this.uploadUserBank.bind(this)}></Button>
+                        <br/>
+                        <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button>
                   </FormItem>
                </Col>
              </Row>
