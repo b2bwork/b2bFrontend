@@ -75,12 +75,6 @@ class BasicUserProfileComponent extends Component {
                                onChange={(e)=> this.setState({Email: e.target.value})} 
                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
                    </p>
-                   <Button 
-                    type="primary" 
-                    onClick={this.editProfile.bind(this)} 
-                    >
-                    แก้ไข
-                   </Button>
                  </FormItem>
                </Collapse.Panel>
                </Collapse>
@@ -93,11 +87,6 @@ class BasicUserProfileComponent extends Component {
                                    onChange={(e)=> this.setState({Telephone: e.target.value})} 
                                    pattern="[0][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                     </p>
-                   <Button 
-                     type="primary" 
-                     onClick={this.editProfile.bind(this)} 
-                     >แก้ไข
-                   </Button>
                  </FormItem>
                </Collapse.Panel>
                </Collapse>
@@ -109,14 +98,14 @@ class BasicUserProfileComponent extends Component {
                              onChange={(data,dateString) => this.setState({BirthDate: dateString})}
                             />
                    </p>
-                   <Button 
+                 </FormItem>
+               </Collapse.Panel>
+               </Collapse>
+               <Button 
                     type="primary" 
                     onClick={this.editProfile.bind(this)} 
                     >แก้ไข
                     </Button> 
-                 </FormItem>
-               </Collapse.Panel>
-               </Collapse>
               {this.state.added}
               <br/><br/>
               </Col>
