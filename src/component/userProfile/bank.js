@@ -38,9 +38,9 @@ class BankUserProfileComponent extends Component {
                 <MenuUserProfileComponent/>               
                </Col>
                <br/><br/>
-               <Col md={20} offset={2}>
+               <Col md={19} offset={3}>
                  <Select
-                   style={{ width: 200 }}
+                   style={{ width: 50% }}
                    placeholder="เลือกธนาคาร"
                    onChange={(bank)=> { this.setState(bank: bank) }}
                   >
