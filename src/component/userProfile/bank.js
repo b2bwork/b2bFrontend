@@ -21,12 +21,12 @@ class BankUserProfileComponent extends Component {
     constructor(props){
      super(props);
      this.state = {
+        id: localStorage.getItem('UserID'),
         bank: props.bank,
         branchBank : props.branchBank,
         bankImage : props.imageBank,
         bankNumber: props.bankNumber
      }
-     console.log(localStorage.getItem('UserID'));
     }
 
     uploadUserBank(){
@@ -34,13 +34,13 @@ class BankUserProfileComponent extends Component {
                BranchBank,
                BankNumber} = this.state;
         this.props.mutate({
-            id: localStorage.getItem('UserID'),
+            id,
             Bank,
             BranchBank,
             BankNumber
         }).then((data)=>{
             console.log(data)
-        })
+        }).catch((err)=> { console.log(err)})
     }
 
     selectbank(bank){
