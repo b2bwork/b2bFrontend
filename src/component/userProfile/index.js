@@ -8,6 +8,7 @@ import NavbarComponent from '../Navbar/index';
 import MenuUserProfileComponent from './menu';
 import BasicUserProfileComponent from './basicUserProfile'
 import BankUserProfileComponent from './bank';
+import IdCardUserProfileComponent from './IdCard';
 
 import '../../../node_modules/antd/dist/antd.min.css';
 
@@ -86,7 +87,7 @@ class userProfileComponent extends Component {
                </Col>
                <Col md={18} offset={3} xs={12}>
                 <br/><br/><br/>
-                <BankUserProfileComponent 
+                <IdCardUserProfileComponent 
                 RealName={this.props.data.listUserProfile.RealName} 
                 Address={this.props.data.listUserProfile.Address} 
                 IdCardNumber={this.props.data.listUserProfile.IdCardNumber}  />               

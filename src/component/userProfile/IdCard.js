@@ -27,7 +27,7 @@ class IdCardUserProfileComponent extends Component {
      }
     }
 
-    uploadUserBank(){
+    uploadUserIDcard(){
         const {RealName,
                Address,
                IdCardNumber} = this.state;
@@ -66,7 +66,7 @@ class IdCardUserProfileComponent extends Component {
                           onChange={(e)=> this.setState({IdCardNumber: e.target.value})}
                         />
                         <br/>
-                        <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button>
+                        <Button type="primary" onClick={this.uploadUserIDcard.bind(this)}>แก้ไข</Button>
                   </FormItem>
             </div>
         );
