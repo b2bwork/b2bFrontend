@@ -37,9 +37,9 @@ class BankUserProfileComponent extends Component {
         this.props.mutate({
             variables:{
               id,
-              Bank,
-              BranchBank,
-              BankNumber
+              bank,
+              branchBank,
+              bankNumber
         }}).then((data)=>{
             console.log(data)
         }).catch((err)=> { console.log(err)})
