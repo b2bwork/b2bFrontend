@@ -30,6 +30,10 @@ const ProfileQuery = gql`
             BranchBank
             BankNumber
             ImageBank
+            ImageBank
+            RealName
+            Address
+            IdCardNumber
         }
 
     }
