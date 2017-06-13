@@ -28,7 +28,7 @@ class BankUserProfileComponent extends Component {
      this.state = {
         bank: props.bank,
         branchBank : props.branchBank,
-        bankImage : props.bankImage,
+        bankImage : props.imageBank,
         bankNumber: props.bankNumber
      }
     }
