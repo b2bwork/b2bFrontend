@@ -29,8 +29,6 @@ const ProfileQuery = gql`
             Bank
             BranchBank
             BankNumber
-            ImageBank
-            ImageBank
             RealName
             Address
             IdCardNumber
@@ -85,6 +83,13 @@ class userProfileComponent extends Component {
                 branchBank={this.props.data.listUserProfile.BranchBank} 
                 bankNumber={this.props.data.listUserProfile.BankNumber} 
                 imageBank={this.props.data.listUserProfile.ImageBank}  />               
+               </Col>
+               <Col md={18} offset={3} xs={12}>
+                <br/><br/><br/>
+                <BankUserProfileComponent 
+                RealName={this.props.data.listUserProfile.RealName} 
+                Address={this.props.data.listUserProfile.Address} 
+                IdCardNumber={this.props.data.listUserProfile.IdCardNumber}  />               
                </Col>
               </Row>
             </div>
