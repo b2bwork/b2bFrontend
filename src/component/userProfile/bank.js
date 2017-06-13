@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
-import {withRouter} from 'react-router-dom';
 import { Form , Col , Row , Button , Select } from 'antd';
 
 import '../../../node_modules/antd/dist/antd.min.css';
@@ -27,6 +26,7 @@ class BankUserProfileComponent extends Component {
         bankImage : props.imageBank,
         bankNumber: props.bankNumber
      }
+     console.log(localStorage.getItem('UserID'));
     }
 
     uploadUserBank(){
@@ -81,5 +81,5 @@ class BankUserProfileComponent extends Component {
     }
 }
 
-const editUserBank = graphql(bankUserProfileMutation)(withRouter(BankUserProfileComponent));
+const editUserBank = graphql(bankUserProfileMutation)(BankUserProfileComponent);
 export default editUserBank;
