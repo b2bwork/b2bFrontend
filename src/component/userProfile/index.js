@@ -43,14 +43,43 @@ class userProfileComponent extends Component {
 
     constructor(props){
        super(props);
-       this.state = {
-           typeForEdit: [<NavbarComponent/>]
-       }
-       
+       console.log(props);
     }
 
     render() {
-        if (this.props.data.loading) {
+
+        if(this.props.match.params.Type == "basic"){
+            if (this.props.data.loading) {
+                   return (<div> </div>)
+                  }
+            if (this.props.data.error) {
+                   return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
+                  }
+
+         return (
+            <div>
+              <NavbarComponent/>
+              <Row>
+               <Col md={2} xs={12}>
+                <MenuUserProfileComponent/>               
+               </Col>
+               <Col md={18} offset={3} xs={12}>
+                <br/><br/><br/>
+                <BasicUserProfileComponent 
+                  FirstName={this.props.data.listUserProfile.FirstName} 
+                  LastName={this.props.data.listUserProfile.LastName} 
+                  ProfileImage={this.props.data.listUserProfile.ProfileImage} 
+                  BirthDate={this.props.data.listUserProfile.BirthDate} 
+                  Telephone={this.props.data.listUserProfile.Telephone} 
+                  Email={this.props.data.listUserProfile.Email} />               
+               </Col>
+              </Row>
+            </div>
+           );
+        }
+
+        if(this.props.match.params.Type == "bank"){
+            if (this.props.data.loading) {
           return (
           <div>
 
@@ -69,32 +98,42 @@ class userProfileComponent extends Component {
                </Col>
                <Col md={18} offset={3} xs={12}>
                 <br/><br/><br/>
-                <BasicUserProfileComponent 
-                FirstName={this.props.data.listUserProfile.FirstName} 
-                LastName={this.props.data.listUserProfile.LastName} 
-                ProfileImage={this.props.data.listUserProfile.ProfileImage} 
-                BirthDate={this.props.data.listUserProfile.BirthDate} 
-                Telephone={this.props.data.listUserProfile.Telephone} 
-                Email={this.props.data.listUserProfile.Email} />               
-               </Col>
-               <Col md={18} offset={3} xs={12}>
-                <br/><br/><br/>
                 <BankUserProfileComponent 
-                bank={this.props.data.listUserProfile.Bank} 
-                branchBank={this.props.data.listUserProfile.BranchBank} 
-                bankNumber={this.props.data.listUserProfile.BankNumber} 
-                imageBank={this.props.data.listUserProfile.ImageBank}  />               
-               </Col>
-               <Col md={18} offset={3} xs={12}>
-                <br/><br/><br/>
-                <IdCardUserProfileComponent 
-                RealName={this.props.data.listUserProfile.RealName} 
-                Address={this.props.data.listUserProfile.Address} 
-                IdCardNumber={this.props.data.listUserProfile.IdCardNumber}  />               
+                  bank={this.props.data.listUserProfile.Bank} 
+                  branchBank={this.props.data.listUserProfile.BranchBank} 
+                  bankNumber={this.props.data.listUserProfile.BankNumber} 
+                  imageBank={this.props.data.listUserProfile.ImageBank}  />               
                </Col>
               </Row>
             </div>
-        );
+            )
+        }
+        if(this.props.match.params.Type == "idcard"){
+          if (this.props.data.loading) {
+          return (
+          <div>
+
+          </div>
+          )
+         }
+         if (this.props.data.error) {
+          return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
+         }
+        return (
+            <div>
+              <NavbarComponent/>
+              <Row>
+               <Col md={18} offset={3} xs={12}>
+                <br/><br/><br/>
+                <IdCardUserProfileComponent 
+                  RealName={this.props.data.listUserProfile.RealName} 
+                  Address={this.props.data.listUserProfile.Address} 
+                  IdCardNumber={this.props.data.listUserProfile.IdCardNumber}  />               
+               </Col>
+              </Row>
+            </div>
+        )
+        }
     }
 }
 const userProfileGraphql = graphql(ProfileQuery,{
