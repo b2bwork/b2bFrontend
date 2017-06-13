@@ -35,9 +35,9 @@ class BankUserProfileComponent extends Component {
                BankNumber} = this.state;
         this.props.mutate({
             id: localStorage.getItem('UserID'),
-            Bank: Bank,
-            BranchBank: BranchBank,
-            BankNumber: BankNumber
+            Bank,
+            BranchBank,
+            BankNumber
         }).then((data)=>{
             console.log(data)
         })
