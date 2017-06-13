@@ -4,10 +4,6 @@ import gql from 'graphql-tag';
 import {withRouter} from 'react-router-dom';
 import { Form , Col , Row , Button , Select } from 'antd';
 
-
-import NavbarComponent from '../Navbar/index';
-import MenuUserProfileComponent from './menu';
-
 import '../../../node_modules/antd/dist/antd.min.css';
 import './index.css';
 
@@ -53,13 +49,6 @@ class BankUserProfileComponent extends Component {
     render() {
         return (
             <div>
-             <NavbarComponent/>
-              <Row>
-               <Col md={2} xs={12}>
-                <MenuUserProfileComponent/>               
-               </Col>
-               <br/><br/>
-               <Col md={19} offset={3}>
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
@@ -87,8 +76,6 @@ class BankUserProfileComponent extends Component {
                         <br/>
                         <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button>
                   </FormItem>
-               </Col>
-             </Row>
             </div>
         );
     }
