@@ -47,7 +47,6 @@ class BankUserProfileComponent extends Component {
     }
 
     selectbank(value){
-        console.log(value);
         this.setState({bank: value});
         console.log(this.state.bank);
     }
