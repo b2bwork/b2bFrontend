@@ -57,7 +57,7 @@ class BankUserProfileComponent extends Component {
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
-                   onChange={(bank)=> { this.selectbank.bind(this) }}
+                   onChange={ this.selectbank.bind(this) }
                   >
                     <Option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</Option>
                     <Option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</Option>
