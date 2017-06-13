@@ -32,11 +32,12 @@ class IdCardUserProfileComponent extends Component {
                Address,
                IdCardNumber} = this.state;
         this.props.mutate({
+            variables:{
             id: localStorage.getItem('UserID'),
             RealName,
             Address,
             IdCardNumber
-        }).then((data)=>{
+        }}).then((data)=>{
             console.log(data)
         }).catch((err)=>{console.log(err)})
     }
