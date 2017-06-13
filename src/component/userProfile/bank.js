@@ -34,6 +34,7 @@ class BankUserProfileComponent extends Component {
                bank,
                branchBank,
                bankNumber} = this.state;
+               console.log(bank);
         this.props.mutate({
             variables:{
               id: id,
@@ -46,7 +47,9 @@ class BankUserProfileComponent extends Component {
     }
 
     selectbank(bank){
+        console.log(bank);
         this.setState({bank: bank});
+        console.log(this.state.bank);
     }
     render() {
         return (
