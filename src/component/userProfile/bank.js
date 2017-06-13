@@ -46,9 +46,9 @@ class BankUserProfileComponent extends Component {
         }).catch((err)=> { console.log(err)})
     }
 
-    selectbank(bank){
-        console.log(bank);
-        this.setState({bank: bank});
+    selectbank(value){
+        console.log(value);
+        this.setState({bank: value});
         console.log(this.state.bank);
     }
     render() {
