@@ -30,7 +30,8 @@ class BankUserProfileComponent extends Component {
     }
 
     uploadUserBank(){
-        const {Bank,
+        const {id,
+               Bank,
                BranchBank,
                BankNumber} = this.state;
         this.props.mutate({
