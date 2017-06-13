@@ -122,7 +122,11 @@ class userProfileComponent extends Component {
         return (
             <div>
               <NavbarComponent/>
+              
               <Row>
+               <Col md={2} xs={12}>
+                <MenuUserProfileComponent/>               
+               </Col>
                <Col md={18} offset={3} xs={12}>
                 <br/><br/><br/>
                 <IdCardUserProfileComponent 
