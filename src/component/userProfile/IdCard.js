@@ -21,8 +21,8 @@ class IdCardUserProfileComponent extends Component {
     constructor(props){
      super(props);
      this.state = {
-        RealName: props.RealName
-        Address: props.Address
+        RealName: props.RealName,
+        Address: props.Address,
         IdCardNumber: props.IdCardNumber
      }
     }
