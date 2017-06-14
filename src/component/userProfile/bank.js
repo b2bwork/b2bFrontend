@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import { Form , Col , Row , Button , Select } from 'antd';
+import DropzoneComponent from 'react-dropzone-component';
 
 import '../../../node_modules/antd/dist/antd.min.css';
 import './index.css';
@@ -25,8 +26,22 @@ class BankUserProfileComponent extends Component {
         bank: props.bank,
         branchBank : props.branchBank,
         bankImage : props.imageBank,
-        bankNumber: props.bankNumber
+        bankNumber: props.bankNumber,
+        added: ''
      }
+     this.djsConfig = {
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/png,image/gif",
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            maxFiles: 1,
+            params: {
+                _id: localStorage.getItem('UserID')
+            }
+            
+        };
+
+        this.dropzone = null;
     }
 
     uploadUserBank(){
@@ -43,12 +58,13 @@ class BankUserProfileComponent extends Component {
               BankNumber: bankNumber
         }}).then((data)=>{
             console.log(data)
-        }).catch((err)=> { console.log(err)})
+        }).catch((err)=> { 
+            this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})
+        })
     }
 
     selectbank(value){
         this.setState({bank: value});
-        console.log(this.state.bank);
     }
     render() {
         return (
