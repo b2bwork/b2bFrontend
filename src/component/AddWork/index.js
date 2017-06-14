@@ -118,7 +118,6 @@ class AddWorkComponent extends Component {
   }
 
     render() {
-        const { previewVisible, previewImage, fileList } = this.state;
         const componentConfig = {
                         iconFiletypes: ['.jpg', '.png', '.gif'],
                         showFiletypeIcon: true,

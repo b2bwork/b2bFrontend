@@ -67,6 +67,19 @@ class BankUserProfileComponent extends Component {
         this.setState({bank: value});
     }
     render() {
+        const componentConfig = {
+                        iconFiletypes: ['.jpg', '.png', '.gif'],
+                        showFiletypeIcon: true,
+                        postUrl: 'http://128.199.68.65:3001/upload/addwork'
+                    };
+        const eventHandlers = {
+            init: dz => this.dropzone = dz,
+            addedfile: null,
+            sendingmultiple: null,
+            processingmultiple: null,
+            completemultiple: ()=> console.log('complete'),
+        }
+
         return (
             <div>
                  <Select
@@ -82,6 +95,8 @@ class BankUserProfileComponent extends Component {
                 
                   </Select>
                   <FormItem>
+                      <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
+                       djsConfig={this.djsConfig} multiple/>
                        <input 
                         placeholder="สาขา"  
                         type="text" 
