@@ -82,7 +82,7 @@ class IdCardUserProfileComponent extends Component {
         }
         return (
             <div>
-                <img src={this.state.ImageIDCard} width={120} height={500}/>
+                <img src={this.state.ImageIDCard} width={200} height={200}/>
                 <br/><br/>
                 <div className="dropzoneJS">
                   <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}

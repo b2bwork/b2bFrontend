@@ -135,7 +135,7 @@ class userProfileComponent extends Component {
                   RealName={this.props.data.listUserProfile.RealName} 
                   Address={this.props.data.listUserProfile.Address} 
                   IdCardNumber={this.props.data.listUserProfile.IdCardNumber}
-                  ImageIDCard={this.props.data.listUserProfile.ImageIDCard}  />               
+                  ImageIDCard={this.props.data.listUserProfile.ImageIdCard}  />               
                </Col>
               </Row>
             </div>
