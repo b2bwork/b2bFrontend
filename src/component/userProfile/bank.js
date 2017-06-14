@@ -80,7 +80,7 @@ class BankUserProfileComponent extends Component {
             init: dz => this.dropzone = dz,
             addedfile: null,
             sendingmultiple: null,
-            processingmultiple: null,
+            processingmultiple: this.dropzone.processQueue(),
             completemultiple: ()=> console.log('complete'),
         }
 
@@ -90,6 +90,7 @@ class BankUserProfileComponent extends Component {
                   <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
                        djsConfig={this.djsConfig} multiple/>
                 </div>
+                <br/>
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
@@ -116,6 +117,7 @@ class BankUserProfileComponent extends Component {
                         onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
                         <br/>
                         <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button>
+                        {this.state.added}
                   </FormItem>
             </div>
         );
