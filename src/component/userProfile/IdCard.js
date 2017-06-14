@@ -45,20 +45,27 @@ class IdCardUserProfileComponent extends Component {
     render() {
         return (
             <div>
+                <img src={this.state.bankImage} width={500} height={120}/>
+                <br/><br/>
                   <FormItem>
-                       <input 
-                          placeholder="ชื่อนามสกุล"  
+                      <p> ชื่อ - นามสกุล
+                        <input 
+                          placeholder="ชื่อ - นามสกุล"  
                           type="text" 
                           value={this.state.RealName} 
                           onChange={(e)=> this.setState({RealName: e.target.value})}
                         />
                         <br/>
+                      </p>
+                      <p> ที่อยู่
                         <textarea  
                           rows="4" 
                           value={this.state.Address}
                           placeholder="ที่อยู่"  
                           onChange={(e)=> this.setState({Address: e.target.value})}/>
                         <br/>
+                      </p>
+                      <p> เลขบัตรประชาชน
                         <input 
                           placeholder="เลขบัตรประชาชน"  
                           type="text" 
@@ -66,6 +73,7 @@ class IdCardUserProfileComponent extends Component {
                           onChange={(e)=> this.setState({IdCardNumber: e.target.value})}
                         />
                         <br/>
+                      </p>
                         <Button type="primary" onClick={this.uploadUserIDcard.bind(this)}>แก้ไข</Button>
                   </FormItem>
             </div>
