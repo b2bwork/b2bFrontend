@@ -28,6 +28,7 @@ class IdCardUserProfileComponent extends Component {
         ImageIDCard: props.ImageIDCard,
         added: ''
      }
+     console.log(this.state.ImageIDCard)
      this.djsConfig = {
             addRemoveLinks: true,
             acceptedFiles: "image/jpeg,image/png,image/gif",
@@ -81,7 +82,7 @@ class IdCardUserProfileComponent extends Component {
         }
         return (
             <div>
-                <img src={this.state.ImageIDCard} width={500} height={120}/>
+                <img src={this.state.ImageIDCard} width={120} height={500}/>
                 <br/><br/>
                 <div className="dropzoneJS">
                   <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
