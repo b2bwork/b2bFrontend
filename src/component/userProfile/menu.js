@@ -21,7 +21,6 @@ export default class MenuUserProfileComponent extends Component {
                    <Menu.Item key="1"><Link to='/myProfile/basic'>ข้อมูลส่วนตัว</Link></Menu.Item>
                   </SubMenu>
                   <SubMenu key="sub2" title={<span><Icon type="home" /><span>ข้อมูลฟรีแลนซ์</span></span>}>
-                    <Menu.Item key="2">ความสามารถ</Menu.Item>
                     <Menu.Item key="3"><Link to='/myProfile/idcard'>บัตรประชาชน</Link></Menu.Item>
                     <Menu.Item key="4"><Link to='/myProfile/bank'>บัญชีธนาคาร</Link></Menu.Item>
                   </SubMenu>
