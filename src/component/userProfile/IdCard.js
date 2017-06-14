@@ -25,6 +25,19 @@ class IdCardUserProfileComponent extends Component {
         Address: props.Address,
         IdCardNumber: props.IdCardNumber
      }
+     this.djsConfig = {
+            addRemoveLinks: true,
+            acceptedFiles: "image/jpeg,image/png,image/gif",
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            maxFiles: 1,
+            params: {
+                _id: localStorage.getItem('UserID')
+            }
+            
+        };
+
+        this.dropzone = null;
     }
 
     uploadUserIDcard(){
@@ -38,15 +51,36 @@ class IdCardUserProfileComponent extends Component {
             Address,
             IdCardNumber
         }}).then((data)=>{
-            console.log(data)
+            if(data.data.AddBank._id == 'added'){
+                this.dropzone.processQueue();
+                this.setState({added: 'เพิ่มข้อมูลเรียบร้อย'})
+            }else{
+                this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})
+            }
         }).catch((err)=>{console.log(err)})
     }
 
     render() {
+        const componentConfig = {
+                        iconFiletypes: ['.jpg', '.png', '.gif'],
+                        showFiletypeIcon: true,
+                        postUrl: 'http://128.199.68.65:3001/upload/userBank'
+                    };
+        const eventHandlers = {
+            init: dz => this.dropzone = dz,
+            addedfile: null,
+            sendingmultiple: null,
+            processingmultiple: null,
+            completemultiple: ()=> console.log('complete'),
+        }
         return (
             <div>
                 <img src={this.state.bankImage} width={500} height={120}/>
                 <br/><br/>
+                <div className="dropzoneJS">
+                  <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
+                       djsConfig={this.djsConfig} multiple/>
+                </div>
                   <FormItem>
                       <p> ชื่อ - นามสกุล
                         <input 
