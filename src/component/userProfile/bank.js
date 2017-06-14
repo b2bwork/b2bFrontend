@@ -86,8 +86,10 @@ class BankUserProfileComponent extends Component {
 
         return (
             <div>
-                <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
+                <div className="dropzoneJS">
+                  <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
                        djsConfig={this.djsConfig} multiple/>
+                </div>
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
