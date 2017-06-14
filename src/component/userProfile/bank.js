@@ -49,7 +49,6 @@ class BankUserProfileComponent extends Component {
                bank,
                branchBank,
                bankNumber} = this.state;
-               console.log(bank);
         this.props.mutate({
             variables:{
               id: id,
@@ -57,7 +56,12 @@ class BankUserProfileComponent extends Component {
               BranchBank: branchBank,
               BankNumber: bankNumber
         }}).then((data)=>{
-            console.log(data)
+            if(data.data.AddBank._id == 'added'){
+                this.dropzone.processQueue();
+                this.setState({added: 'เพิ่มข้อมูลเรียบร้อย'})
+            }else{
+                this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})
+            }
         }).catch((err)=> { 
             this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})
         })
