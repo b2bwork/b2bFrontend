@@ -87,12 +87,12 @@ class BankUserProfileComponent extends Component {
         return (
             <div>
                 <img src={this.state.bankImage} width={500} height={120}/>
-                <br/>
+                <br/><br/>
                 <div className="dropzoneJS">
                   <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
                        djsConfig={this.djsConfig} multiple/>
                 </div>
-                <br/>
+                <br/><br/>
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
@@ -106,18 +106,22 @@ class BankUserProfileComponent extends Component {
                 
                   </Select>
                   <FormItem>
+                      <p>สาขา
                        <input 
-                        placeholder="สาขา"  
-                        type="text" 
-                        value={this.state.branchBank} 
-                        onChange={(e)=> this.setState({branchBank: e.target.value})}/>
+                          placeholder="สาขา"  
+                          type="text" 
+                          value={this.state.branchBank} 
+                          onChange={(e)=> this.setState({branchBank: e.target.value})}/>
                         <br/>
+                      </p>
+                      <p>หมายเลขบัญชี
                         <input 
-                        placeholder="หมายเลขบัญชี"  
-                        type="text" 
-                        value={this.state.bankNumber} 
-                        onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
+                          placeholder="หมายเลขบัญชี"  
+                          type="text" 
+                          value={this.state.bankNumber} 
+                          onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
                         <br/>
+                      </p>
                         <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button>
                         {this.state.added}
                   </FormItem>
