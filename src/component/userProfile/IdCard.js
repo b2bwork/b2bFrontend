@@ -59,7 +59,9 @@ class IdCardUserProfileComponent extends Component {
             }else{
                 this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})
             }
-        }).catch((err)=>{console.log(err)})
+        }).catch((err)=>{
+            console.log(err);
+            this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})})
     }
 
     render() {
