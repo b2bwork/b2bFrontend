@@ -25,6 +25,7 @@ class IdCardUserProfileComponent extends Component {
         RealName: props.RealName,
         Address: props.Address,
         IdCardNumber: props.IdCardNumber,
+        ImageIDCard: props.ImageIDCard,
         added: ''
      }
      this.djsConfig = {
@@ -80,7 +81,7 @@ class IdCardUserProfileComponent extends Component {
         }
         return (
             <div>
-                <img src={this.state.bankImage} width={500} height={120}/>
+                <img src={this.state.ImageIDCard} width={500} height={120}/>
                 <br/><br/>
                 <div className="dropzoneJS">
                   <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
