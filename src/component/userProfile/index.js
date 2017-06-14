@@ -44,7 +44,6 @@ class userProfileComponent extends Component {
 
     constructor(props){
        super(props);
-       console.log(props);
     }
 
     render() {
@@ -56,7 +55,7 @@ class userProfileComponent extends Component {
             if (this.props.data.error) {
                    return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
                   }
-
+          console.log(this.props)
          return (
             <div>
               <NavbarComponent/>
@@ -90,6 +89,7 @@ class userProfileComponent extends Component {
          if (this.props.data.error) {
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
+         console.log(this.props)
         return (
             <div>
               <NavbarComponent/>
@@ -120,6 +120,7 @@ class userProfileComponent extends Component {
          if (this.props.data.error) {
           return (<div>เกิดปัญหาในการโหลดข้อมูลโปรดลองใหม่ภายหลัง</div>)
          }
+         console.log(this.props)
         return (
             <div>
               <NavbarComponent/>
