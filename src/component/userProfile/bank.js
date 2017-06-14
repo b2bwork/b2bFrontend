@@ -122,7 +122,7 @@ class BankUserProfileComponent extends Component {
                           onChange={(e)=> this.setState({bankNumber: e.target.value})}/>
                         <br/>
                       </p>
-                        <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button>
+                        <Button type="primary" onClick={this.uploadUserBank.bind(this)}>แก้ไข</Button><br/>
                         {this.state.added}
                   </FormItem>
             </div>

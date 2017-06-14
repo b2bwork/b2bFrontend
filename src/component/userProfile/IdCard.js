@@ -24,7 +24,8 @@ class IdCardUserProfileComponent extends Component {
      this.state = {
         RealName: props.RealName,
         Address: props.Address,
-        IdCardNumber: props.IdCardNumber
+        IdCardNumber: props.IdCardNumber,
+        added: ''
      }
      this.djsConfig = {
             addRemoveLinks: true,
@@ -109,7 +110,8 @@ class IdCardUserProfileComponent extends Component {
                         />
                         <br/>
                       </p>
-                        <Button type="primary" onClick={this.uploadUserIDcard.bind(this)}>แก้ไข</Button>
+                        <Button type="primary" onClick={this.uploadUserIDcard.bind(this)}>แก้ไข</Button><br/>
+                        {this.state.added}
                   </FormItem>
             </div>
         );
