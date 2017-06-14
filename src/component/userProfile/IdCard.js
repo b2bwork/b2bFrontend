@@ -53,13 +53,16 @@ class IdCardUserProfileComponent extends Component {
             Address,
             IdCardNumber
         }}).then((data)=>{
-            if(data.data.AddBank._id == 'added'){
+            console.log(data);
+            /**if(data.data.AddBank._id == 'added'){
                 this.dropzone.processQueue();
                 this.setState({added: 'เพิ่มข้อมูลเรียบร้อย'})
             }else{
                 this.setState({added: 'เปิดปัญหาในการเพิ่มบัตรประชาชนของคุณโปรดลองใหม่ภายหลัง'})
-            }
-        })
+            }*/
+        }).catch((err)=>{
+            console.log(err);
+            this.setState({added: 'เปิดปัญหาในการเพิ่มบัตรประชาชนของคุณโปรดลองใหม่ภายหลัง'})})
     }
 
     render() {
