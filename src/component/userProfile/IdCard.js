@@ -64,7 +64,7 @@ class IdCardUserProfileComponent extends Component {
         const componentConfig = {
                         iconFiletypes: ['.jpg', '.png', '.gif'],
                         showFiletypeIcon: true,
-                        postUrl: 'http://128.199.68.65:3001/upload/userBank'
+                        postUrl: 'http://128.199.68.65:3001/upload/userIDcard'
                     };
         const eventHandlers = {
             init: dz => this.dropzone = dz,
