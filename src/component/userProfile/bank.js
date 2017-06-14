@@ -80,7 +80,7 @@ class BankUserProfileComponent extends Component {
             init: dz => this.dropzone = dz,
             addedfile: null,
             sendingmultiple: null,
-            processingmultiple: this.dropzone.processQueue(),
+            processingmultiple: null,
             completemultiple: ()=> console.log('complete'),
         }
 
