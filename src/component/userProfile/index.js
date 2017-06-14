@@ -10,6 +10,7 @@ import BasicUserProfileComponent from './basicUserProfile'
 import BankUserProfileComponent from './bank';
 import IdCardUserProfileComponent from './IdCard';
 
+
 import '../../../node_modules/antd/dist/antd.min.css';
 
 const ProfileQuery = gql`

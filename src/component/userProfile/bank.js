@@ -86,6 +86,8 @@ class BankUserProfileComponent extends Component {
 
         return (
             <div>
+                <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
+                       djsConfig={this.djsConfig} multiple/>
                  <Select
                    className="select"
                    placeholder="เลือกธนาคาร"
@@ -99,8 +101,6 @@ class BankUserProfileComponent extends Component {
                 
                   </Select>
                   <FormItem>
-                      <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
-                       djsConfig={this.djsConfig} multiple/>
                        <input 
                         placeholder="สาขา"  
                         type="text" 
