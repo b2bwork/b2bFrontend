@@ -57,12 +57,9 @@ class IdCardUserProfileComponent extends Component {
                 this.dropzone.processQueue();
                 this.setState({added: 'เพิ่มข้อมูลเรียบร้อย'})
             }else{
-                this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})
+                this.setState({added: 'เปิดปัญหาในการเพิ่มบัตรประชาชนของคุณโปรดลองใหม่ภายหลัง'})
             }
-        }).catch((err)=>{
-            console.log(err);
-            this.setState({added: 'เปิดปัญหาในการเพิ่มบัญชีของคุณโปรดลองใหม่ภายหลัง'})})
-    }
+        })
 
     render() {
         const componentConfig = {
