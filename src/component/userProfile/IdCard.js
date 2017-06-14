@@ -55,7 +55,6 @@ class IdCardUserProfileComponent extends Component {
                         <br/>
                         <textarea  
                           rows="4" 
-                          cols="10"
                           value={this.state.Address}
                           placeholder="ที่อยู่"  
                           onChange={(e)=> this.setState({Address: e.target.value})}/>
