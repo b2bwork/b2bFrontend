@@ -60,6 +60,7 @@ class IdCardUserProfileComponent extends Component {
                 this.setState({added: 'เปิดปัญหาในการเพิ่มบัตรประชาชนของคุณโปรดลองใหม่ภายหลัง'})
             }
         })
+    }
 
     render() {
         const componentConfig = {
