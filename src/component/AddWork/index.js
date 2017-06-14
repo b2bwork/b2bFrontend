@@ -60,6 +60,7 @@ class AddWorkComponent extends Component {
             acceptedFiles: "image/jpeg,image/png,image/gif",
             uploadMultiple: true,
             autoProcessQueue: false,
+            parallelUploads: 8,
             maxFiles: 8,
             params: {
                 _id: this.state.WorkId
@@ -101,18 +102,7 @@ class AddWorkComponent extends Component {
                                 TagWork }
                 }
                 ).then((data) =>{
-                    console(data.data.InsertWork._id);
                     this.setState({WorkId:data.data.InsertWork._id });
-                    this.djsConfig = {
-            addRemoveLinks: true,
-            acceptedFiles: "image/jpeg,image/png,image/gif",
-            uploadMultiple: true,
-            autoProcessQueue: false,
-            params: {
-                _id: this.state.WorkId
-            }
-            
-        };
                     this.dropzone.processQueue();
                    
                })
@@ -139,7 +129,6 @@ class AddWorkComponent extends Component {
             addedfile: null,
             sendingmultiple: null,
             processingmultiple: null,
-            successmultiple: ()=> this.dropzone.processQueue(),
             completemultiple: ()=> console.log('complete'),
         }
 
