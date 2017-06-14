@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import { Form , Col , Row , Button , Select } from 'antd';
+import DropzoneComponent from 'react-dropzone-component';
 
 import '../../../node_modules/antd/dist/antd.min.css';
 import './index.css';
