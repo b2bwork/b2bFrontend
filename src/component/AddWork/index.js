@@ -60,6 +60,7 @@ class AddWorkComponent extends Component {
             acceptedFiles: "image/jpeg,image/png,image/gif",
             uploadMultiple: true,
             autoProcessQueue: false,
+            maxFiles: 8,
             params: {
                 _id: this.state.WorkId
             }
