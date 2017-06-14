@@ -87,6 +87,7 @@ class BankUserProfileComponent extends Component {
         return (
             <div>
                 <img src={this.state.bankImage} width={200} height={120}/>
+                <br/>
                 <div className="dropzoneJS">
                   <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
                        djsConfig={this.djsConfig} multiple/>
