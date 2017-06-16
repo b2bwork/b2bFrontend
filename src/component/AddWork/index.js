@@ -82,7 +82,6 @@ class AddWorkComponent extends Component {
 
         if(CategoryName.length > 0 && 
            WorkName.length > 0 &&
-           WorkerId.length > 0 && 
            ScopeWork.length > 0 && 
            Workdays.toString().length > 0 &&
            DetailWork.length > 0 && 
