@@ -45,7 +45,6 @@ class AddWorkComponent extends Component {
     this.state = {
         CategoryName: '' , 
         WorkName: '',
-        WorkerId: localStorage.getItem('UserID')  , 
         ScopeWork: '' , 
         Workdays : '' , 
         DetailWork: '' , 
@@ -63,7 +62,7 @@ class AddWorkComponent extends Component {
             parallelUploads: 8,
             maxFiles: 8,
             params: {
-                _id: this.state.WorkId
+                _id: localStorage.getItem('UserID')
             }
             
         };
@@ -161,6 +160,8 @@ class AddWorkComponent extends Component {
              ราคา <InputNumber min={1500}  defaultValue={1500} placeholder="ราคา" onChange={(e) => {this.setState({Price: e})}} />
 
              </div>
+             <br/>
+             <br/>
              <div className="clearfix">
               <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers}
                        djsConfig={this.djsConfig} multiple/>
