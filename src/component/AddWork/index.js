@@ -86,8 +86,7 @@ class AddWorkComponent extends Component {
            Workdays.toString().length > 0 &&
            DetailWork.length > 0 && 
            ExperienceWorker.length > 0 && 
-           Price.toString().length > 0 && 
-           TagWork.length >= 0){
+           Price.toString().length > 0 ){
                this.props.mutate({
                     variables: {CategoryName, 
                                 WorkName, 
@@ -101,7 +100,7 @@ class AddWorkComponent extends Component {
                 }
                 ).then((data) =>{
                     this.setState({WorkId:data.data.InsertWork._id });
-                    this.dropzone.processQueue();
+                    this.dropzone.processQueue()
                    
                })
 
@@ -126,7 +125,7 @@ class AddWorkComponent extends Component {
             addedfile: null,
             sendingmultiple: null,
             processingmultiple: null,
-            completemultiple: ()=> console.log('complete'),
+            completemultiple: (data)=> {console.log('complete');console.log(data)},
         }
 
 
@@ -136,7 +135,6 @@ class AddWorkComponent extends Component {
                 <br/><br/>
                 <Col md={10} offset={3}>
                 <div>
-                    {this.state.WorkId}
                <Input placeholder="หมวดหมู่งาน" type="text" onChange={(e) => this.setState({CategoryName: e.target.value})} />
                <br/>    
              </div>
