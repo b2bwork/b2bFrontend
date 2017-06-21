@@ -132,6 +132,7 @@ class AddWorkComponent extends Component {
 
         return (
             <div>
+                {this.state.WorkerId}
                 <NavbarComponent/>
                 <br/><br/>
                 <Col md={10} offset={3}>
