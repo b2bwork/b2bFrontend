@@ -60,7 +60,7 @@ class listFreelanceWorkComponent extends Component {
             }
             </Row>
             <br/><br/>
-            <Button type="primary">เพิ่มงาน</Button>
+            <Link to="/addWork"><Button type="primary">เพิ่มงาน</Button></Link>
         </div>
         );
     }
