@@ -43,6 +43,7 @@ class listFreelanceWorkComponent extends Component {
     return (
         <div>
             <NavbarComponent/>
+            <Row>
             {this.props.data.listFreelanceWorks.map((data,key)=>{
                return( 
                     <div key={key}>
@@ -58,6 +59,9 @@ class listFreelanceWorkComponent extends Component {
                    )
             })
             }
+            </Row>
+            <br/><br/>
+            <Button type="primary">เพิ่มงาน</Button>
         </div>
         );
     }
@@ -69,5 +73,5 @@ const listFreelanceWork = graphql(listFreelanceWorkQuery,{
         WorkerId: localStorage.getItem('UserID')
       }
     })
-  })();
+  })(listFreelanceWorkComponent);
 export default listFreelanceWork;
