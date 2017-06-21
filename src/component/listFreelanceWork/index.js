@@ -10,8 +10,8 @@ import NavbarComponent from '../Navbar/index';
 import '../../../node_modules/antd/dist/antd.min.css';
 
 const listFreelanceWorkQuery = gql`
-      {
-          listWorks($WorkerId: String!){
+      
+    query   listWorks($WorkerId: String!){
               listFreelanceWorks(WorkerId: $WorkerId){
                   _id
                   WorkName
@@ -21,7 +21,7 @@ const listFreelanceWorkQuery = gql`
                   Verify
               }
           }
-      }
+      
 `
 class listFreelanceWorkComponent extends Component {
     render() {
@@ -52,7 +52,6 @@ class listFreelanceWorkComponent extends Component {
                         <img src={data.CoverImage} width="100%" alt=""/>
                         <h3>{data.WorkName}</h3>
                         <p><span><Icon type="shopping"/>{"  "+data.Queue}</span></p>
-                        <p><span><Icon type="shopping"/>{"  "+data.Verify}</span></p>
                        </Col>
                       </Link>
                    </div>
