@@ -53,6 +53,7 @@ class AddWorkComponent extends Component {
         TagWork : [] ,
         WorkId: '',
         nullInput: '',
+        WorkerId: localStorage.getItem('UserID')
     }
     this.djsConfig = {
             addRemoveLinks: true,
