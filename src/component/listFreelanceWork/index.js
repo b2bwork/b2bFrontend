@@ -4,7 +4,10 @@ import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 
 import { Button , Input , Col , Row , Icon , Modal , InputNumber} from 'antd';
+import ContentLoader, { Rect } from 'react-content-loader';
 import NavbarComponent from '../Navbar/index';
+
+import '../../../node_modules/antd/dist/antd.min.css';
 
 const listFreelanceWorkQuery = gql`
       {
